@@ -7,15 +7,15 @@ import { PopoverProps } from '@mui/material/Popover';
 import { useContext } from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { ReactComponent as SpeedDialIcon } from '@/assets/icons/help_no_circle.svg';
+import { ReactComponent as SpeedDialIcon } from '@/assets/icons/help_no_circle.svg?react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as WhatsNewIcon } from '@/assets/icons/star.svg';
-import { ReactComponent as SupportIcon } from '@/assets/icons/help.svg';
-import { ReactComponent as BugIcon } from '@/assets/icons/bug.svg';
-import { ReactComponent as FeedbackIcon } from '@/assets/icons/feedback.svg';
-import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg';
-import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg';
-import { ReactComponent as DocumentationIcon } from '@/assets/icons/help_&_documentation.svg';
+import { ReactComponent as WhatsNewIcon } from '@/assets/icons/star.svg?react';
+import { ReactComponent as SupportIcon } from '@/assets/icons/help.svg?react';
+import { ReactComponent as BugIcon } from '@/assets/icons/bug.svg?react';
+import { ReactComponent as FeedbackIcon } from '@/assets/icons/feedback.svg?react';
+import { ReactComponent as MoonIcon } from '@/assets/icons/moon.svg?react';
+import { ReactComponent as SunIcon } from '@/assets/icons/sun.svg?react';
+import { ReactComponent as DocumentationIcon } from '@/assets/icons/help_&_documentation.svg?react';
 
 const popoverProps: Partial<PopoverProps> = {
   anchorOrigin: {

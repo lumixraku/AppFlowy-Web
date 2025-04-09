@@ -26,7 +26,8 @@
       "cypress",
       "node",
       "jest",
-      "cypress-real-events"
+      "cypress-real-events",
+      "vite-plugin-svgr/client"
     ],
     "baseUrl": ".",
     "paths": {

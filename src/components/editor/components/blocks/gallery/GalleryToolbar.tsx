@@ -1,9 +1,9 @@
 import { IconButton, Tooltip } from '@mui/material';
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as CopyLinkIcon } from '@/assets/icons/link.svg';
-import { ReactComponent as DownloadIcon } from '@/assets/icons/save_as.svg';
-import { ReactComponent as PreviewIcon } from '@/assets/icons/expand.svg';
+import { ReactComponent as CopyLinkIcon } from '@/assets/icons/link.svg?react';
+import { ReactComponent as DownloadIcon } from '@/assets/icons/save_as.svg?react';
+import { ReactComponent as PreviewIcon } from '@/assets/icons/expand.svg?react';
 
 function GalleryToolbar ({
   onOpenPreview,

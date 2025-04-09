@@ -1,5 +1,5 @@
 import { Invitation } from '@/application/types';
-import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
+import AppFlowyLogo from '@/assets/icons/appflowy.svg?react';
 import ChangeAccount from '@/components/_shared/modal/ChangeAccount';
 import { notify } from '@/components/_shared/notify';
 import { getAvatar } from '@/components/_shared/view-icon/utils';
@@ -86,7 +86,7 @@ function AcceptInvitationPage() {
           'sticky flex h-20 w-full cursor-pointer items-center justify-between max-md:h-32 max-md:justify-center'
         }
       >
-        <AppflowyLogo className={'h-12 w-32 max-md:w-52'} />
+        <AppFlowyLogo className={'h-12 w-32 max-md:w-52'} />
       </div>
       <div className={'flex w-full max-w-[560px] flex-col items-center gap-6 text-center'}>
         <Avatar

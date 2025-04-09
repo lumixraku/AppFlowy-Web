@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React, { useCallback, useEffect } from 'react';
-import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
+import AppFlowyLogo from '@/assets/icons/appflowy.svg?react';
 
 function AfterPaymentPage() {
   const openAppFlowy = useCallback(() => {
@@ -15,7 +15,7 @@ function AfterPaymentPage() {
       <div className={'flex max-w-[560px] flex-col items-center gap-1 text-center'}>
         <Typography variant='h3' className={'mb-[27px] flex items-center gap-4 text-text-title'} gutterBottom>
           <>
-            <AppflowyLogo className={'w-32'} />
+            <AppFlowyLogo className={'w-32'} />
           </>
         </Typography>
         <div className={'mb-[16px] text-[52px] font-semibold leading-[128%] text-text-title'}>

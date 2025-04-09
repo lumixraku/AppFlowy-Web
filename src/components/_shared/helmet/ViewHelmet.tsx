@@ -14,7 +14,7 @@ function ViewHelmet ({
   useEffect(() => {
     const setFavicon = async () => {
       try {
-        let url = '/appflowy.svg';
+        let url = '/appflowy.svg?react';
         const link = document.querySelector('link[rel*=\'icon\']') as HTMLLinkElement || document.createElement('link');
 
         if (icon && icon.value) {

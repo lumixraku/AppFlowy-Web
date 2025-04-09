@@ -6,7 +6,7 @@ import { TaskAltRounded } from '@mui/icons-material';
 import { Button, Divider, Typography } from '@mui/material';
 import React, { useContext } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
+import AppFlowyLogo from '@/assets/icons/appflowy.svg?react';
 import { useNavigate } from 'react-router-dom';
 
 const REPEAT_REQUEST_CODE = 1043;
@@ -43,7 +43,7 @@ function RequestAccess() {
       <div className={'mb-10 flex max-w-[660px] flex-col items-center gap-3 px-6 text-center'}>
         <Typography variant='h3' className={'mb-[27px] flex items-center gap-4 text-text-title'} gutterBottom>
           <>
-            <AppflowyLogo className={'w-48'} />
+            <AppFlowyLogo className={'w-48'} />
           </>
         </Typography>
         <div className={'mb-[16px] text-[52px]  font-semibold leading-[128%] text-text-title max-md:text-[24px]'}>

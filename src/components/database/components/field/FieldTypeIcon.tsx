@@ -1,19 +1,19 @@
 import { FieldType } from '@/application/database-yjs/database.type';
 import { FC, memo } from 'react';
-import { ReactComponent as TextSvg } from '@/assets/icons/text.svg';
-import { ReactComponent as NumberSvg } from '@/assets/icons/number.svg';
-import { ReactComponent as DateSvg } from '@/assets/icons/date.svg';
-import { ReactComponent as SingleSelectSvg } from '@/assets/icons/single_select.svg';
-import { ReactComponent as MultiSelectSvg } from '@/assets/icons/multiselect.svg';
-import { ReactComponent as ChecklistSvg } from '@/assets/icons/checklist.svg';
-import { ReactComponent as CheckboxSvg } from '@/assets/icons/checkbox.svg';
-import { ReactComponent as URLSvg } from '@/assets/icons/link.svg';
-import { ReactComponent as LastEditedTimeSvg } from '@/assets/icons/last_modified.svg';
-import { ReactComponent as CreatedSvg } from '@/assets/icons/created_at.svg';
-import { ReactComponent as RelationSvg } from '@/assets/icons/relation.svg';
-import { ReactComponent as AISummariesSvg } from '@/assets/icons/ai_summary.svg';
-import { ReactComponent as AITranslationsSvg } from '@/assets/icons/ai_translate.svg';
-import { ReactComponent as FileMediaSvg } from '@/assets/icons/attachment.svg';
+import { ReactComponent as TextSvg } from '@/assets/icons/text.svg?react';
+import { ReactComponent as NumberSvg } from '@/assets/icons/number.svg?react';
+import { ReactComponent as DateSvg } from '@/assets/icons/date.svg?react';
+import { ReactComponent as SingleSelectSvg } from '@/assets/icons/single_select.svg?react';
+import { ReactComponent as MultiSelectSvg } from '@/assets/icons/multiselect.svg?react';
+import { ReactComponent as ChecklistSvg } from '@/assets/icons/checklist.svg?react';
+import { ReactComponent as CheckboxSvg } from '@/assets/icons/checkbox.svg?react';
+import { ReactComponent as URLSvg } from '@/assets/icons/link.svg?react';
+import { ReactComponent as LastEditedTimeSvg } from '@/assets/icons/last_modified.svg?react';
+import { ReactComponent as CreatedSvg } from '@/assets/icons/created_at.svg?react';
+import { ReactComponent as RelationSvg } from '@/assets/icons/relation.svg?react';
+import { ReactComponent as AISummariesSvg } from '@/assets/icons/ai_summary.svg?react';
+import { ReactComponent as AITranslationsSvg } from '@/assets/icons/ai_translate.svg?react';
+import { ReactComponent as FileMediaSvg } from '@/assets/icons/attachment.svg?react';
 
 export const FieldTypeSvgMap: Record<FieldType, FC<React.SVGProps<SVGSVGElement>>> = {
   [FieldType.RichText]: TextSvg,

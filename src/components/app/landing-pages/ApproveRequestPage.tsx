@@ -4,8 +4,8 @@ import {
   SubscriptionInterval,
   SubscriptionPlan,
 } from '@/application/types';
-import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
-import { ReactComponent as WarningIcon } from '@/assets/icons/warning.svg';
+import AppFlowyLogo from '@/assets/icons/appflowy.svg?react';
+import WarningIcon from '@/assets/icons/warning.svg?react';
 import { NormalModal } from '@/components/_shared/modal';
 import ChangeAccount from '@/components/_shared/modal/ChangeAccount';
 import { notify } from '@/components/_shared/notify';
@@ -134,7 +134,7 @@ function ApproveRequestPage() {
           'sticky flex h-20 w-full cursor-pointer items-center justify-between max-md:h-32 max-md:justify-center'
         }
       >
-        <AppflowyLogo className={'h-12 w-32 max-md:w-52'} />
+        <AppFlowyLogo className={'h-12 w-32 max-md:w-52'} />
       </div>
       <div className={'flex w-full max-w-[560px] flex-1 flex-col items-center justify-center gap-6 text-center'}>
         <Avatar

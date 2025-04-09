@@ -3,10 +3,10 @@ import { AFConfigContext } from '@/components/main/app.hooks';
 import { Button, Collapse } from '@mui/material';
 import React, { useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as GoogleSvg } from '@/assets/login/google.svg';
-import { ReactComponent as GithubSvg } from '@/assets/login/github.svg';
-import { ReactComponent as DiscordSvg } from '@/assets/login/discord.svg';
-import { ReactComponent as AppleSvg } from '@/assets/login/apple.svg';
+import { ReactComponent as GoogleSvg } from '@/assets/login/google.svg?react';
+import { ReactComponent as GithubSvg } from '@/assets/login/github.svg?react';
+import { ReactComponent as DiscordSvg } from '@/assets/login/discord.svg?react';
+import { ReactComponent as AppleSvg } from '@/assets/login/apple.svg?react';
 
 function LoginProvider({ redirectTo }: { redirectTo: string }) {
   const { t } = useTranslation();

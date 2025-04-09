@@ -11,11 +11,11 @@ import { Button, CircularProgress, IconButton, Tooltip } from '@mui/material';
 import dayjs from 'dayjs';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as MoreIcon } from '@/assets/icons/more.svg';
-import { ReactComponent as GlobalIcon } from '@/assets/icons/earth.svg';
-import { ReactComponent as CopyIcon } from '@/assets/icons/copy.svg';
-import { ReactComponent as TrashIcon } from '@/assets/icons/delete.svg';
-import { ReactComponent as SettingIcon } from '@/assets/icons/settings.svg';
+import MoreIcon from '@/assets/icons/more.svg?react';
+import { ReactComponent as GlobalIcon } from '@/assets/icons/earth.svg?react';
+import { ReactComponent as CopyIcon } from '@/assets/icons/copy.svg?react';
+import { ReactComponent as TrashIcon } from '@/assets/icons/delete.svg?react';
+import { ReactComponent as SettingIcon } from '@/assets/icons/settings.svg?react';
 
 function PublishedPageItem({ namespace, onClose, view, onUnPublish }: {
   view: View,

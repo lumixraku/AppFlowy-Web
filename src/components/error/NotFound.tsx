@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Typography, Button } from '@mui/material';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as AppflowyLogo } from '@/assets/icons/appflowy.svg';
+import AppFlowyLogo from '@/assets/icons/appflowy.svg?react';
 
 const NotFound = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const NotFound = () => {
     <div className={'m-0 flex h-screen w-screen items-center justify-center bg-bg-body p-0'}>
       <div className={'flex flex-col items-center gap-1 text-center'}>
         <Typography variant='h3' className={'mb-[27px] flex items-center gap-4 text-text-title'} gutterBottom>
-          <AppflowyLogo className={'w-32'} />
+          <AppFlowyLogo className={'w-32'} />
         </Typography>
         <div className={'mb-[16px] text-[52px] font-semibold leading-[128%] text-text-title max-sm:text-[24px]'}>
           {t('publish.noAccessToVisit')}
