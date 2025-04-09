@@ -13,8 +13,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Transforms } from 'slate';
 import { ReactEditor, useSlateStatic } from 'slate-react';
-import { ReactComponent as AddIcon } from '@/assets/icons/plus.svg?react';
-import { ReactComponent as ArrowIcon } from '@/assets/icons/forward_arrow.svg?react';
+import AddIcon from '@/assets/icons/plus.svg?react';
+import ArrowIcon from '@/assets/icons/forward_arrow.svg?react';
 import MoreIcon from '@/assets/icons/more.svg?react';
 import { calculateOptimalOrigins, Popover } from '@/components/_shared/popover';
 import dayjs from 'dayjs';

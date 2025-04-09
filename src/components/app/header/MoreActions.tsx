@@ -8,7 +8,7 @@ import { Button, Divider, IconButton, Tooltip } from '@mui/material';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MoreActionsContent from './MoreActionsContent';
-import { ReactComponent as AddToPageIcon } from '@/assets/icons/add_to_page.svg?react';
+import AddToPageIcon from '@/assets/icons/add_to_page.svg?react';
 import { useService } from '@/components/main/app.hooks';
 
 function MoreActions({ viewId, onDeleted }: { viewId: string; onDeleted?: () => void }) {

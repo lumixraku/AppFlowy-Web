@@ -1,10 +1,10 @@
 import { ViewLayout } from '@/application/types';
 import React, { useMemo } from 'react';
-import { ReactComponent as BoardSvg } from '@/assets/icons/board.svg?react';
-import { ReactComponent as CalendarSvg } from '@/assets/icons/calendar.svg?react';
-import { ReactComponent as DocumentSvg } from '@/assets/icons/page.svg?react';
-import { ReactComponent as GridSvg } from '@/assets/icons/grid.svg?react';
-import { ReactComponent as ChatSvg } from '@/assets/icons/ai_chat.svg?react';
+import BoardSvg from '@/assets/icons/board.svg?react';
+import CalendarSvg from '@/assets/icons/calendar.svg?react';
+import DocumentSvg from '@/assets/icons/page.svg?react';
+import GridSvg from '@/assets/icons/grid.svg?react';
+import ChatSvg from '@/assets/icons/ai_chat.svg?react';
 
 export function ViewIcon ({ layout, size, className }: {
   layout: ViewLayout;

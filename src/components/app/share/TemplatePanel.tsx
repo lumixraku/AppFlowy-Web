@@ -10,7 +10,7 @@ import { Button, Skeleton } from '@mui/material';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import DeleteIcon from '@/assets/icons/delete.svg?react';
-import { ReactComponent as EditIcon } from '@/assets/icons/edit.svg?react';
+import EditIcon from '@/assets/icons/edit.svg?react';
 
 function TemplatePanel({ viewId }: { viewId: string }) {
   const view = useAppView(viewId);

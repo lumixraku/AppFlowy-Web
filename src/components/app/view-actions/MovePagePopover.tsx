@@ -10,7 +10,7 @@ import React, { useMemo } from 'react';
 import SearchIcon from '@/assets/icons/search.svg?react';
 import { useTranslation } from 'react-i18next';
 import OutlineIcon from '@/components/_shared/outline/OutlineIcon';
-import { ReactComponent as SelectedIcon } from '@/assets/icons/tick.svg?react';
+import SelectedIcon from '@/assets/icons/tick.svg?react';
 
 function MovePagePopover({
   viewId,

@@ -1,6 +1,6 @@
 import { YjsEditor } from '@/application/slate-yjs';
 import { CustomEditor } from '@/application/slate-yjs/command';
-import { ReactComponent as CopyIcon } from '@/assets/icons/copy.svg?react';
+import CopyIcon from '@/assets/icons/copy.svg?react';
 import DeleteIcon from '@/assets/icons/delete.svg?react';
 import { notify } from '@/components/_shared/notify';
 import ActionButton from '@/components/editor/components/toolbar/selection-toolbar/actions/ActionButton';

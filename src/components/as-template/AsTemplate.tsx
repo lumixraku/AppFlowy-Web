@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import DeleteIcon from '@/assets/icons/delete.svg?react';
 import './template.scss';
 import { slugify } from '@/components/as-template/utils';
-import { ReactComponent as WebsiteIcon } from '@/assets/icons/earth.svg?react';
+import WebsiteIcon from '@/assets/icons/earth.svg?react';
 
 function AsTemplate({ viewName, viewUrl, viewId }: { viewName: string; viewUrl: string; viewId: string }) {
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);

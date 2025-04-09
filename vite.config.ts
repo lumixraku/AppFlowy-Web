@@ -38,16 +38,44 @@ export default defineConfig({
     }) : undefined,
     svgr({
       svgrOptions: {
-        // TypeScript和React特定选项
-        typescript: true,
-        memo: true,
-        // 确保组件能接收标准React属性
-        svgProps: {
-          className: '{props.className || ""}',
-        },
+        prettier: false,
+        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
+        icon: true,
         exportType: 'default',
+        ref: false,
+        titleProp: false,
+        svgo: true,
+        typescript: false,
+        svgoConfig: {
+          multipass: true,
+          plugins: [
+            {
+              name: 'preset-default',
+              params: {
+                overrides: {
+                  removeViewBox: false,
+                },
+              },
+            },
+            {
+              name: 'prefixIds',
+              params: {
+                prefix: (node, { path }) => {
+                  const fileName = path?.split('/')?.pop()?.split('.')?.[0];
+                  return `${fileName}-`;
+                },
+              },
+            },
+          ],
+        },
+        svgProps: {
+          role: 'img',
+        },
+        replaceAttrValues: {
+          '#333': 'currentColor',
+          'black': 'currentColor',
+        },
       },
-      include: "**/*.svg?react",
     }),
     istanbul({
       cypress: true,

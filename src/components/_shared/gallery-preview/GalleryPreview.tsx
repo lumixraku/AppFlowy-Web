@@ -5,12 +5,13 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef } from 'react-zoom-pan-pinch';
 import RightIcon  from '@/assets/icons/alt_arrow_right.svg?react';
-import { ReactComponent as ReloadIcon } from '@/assets/icons/reset.svg?react';
-import { ReactComponent as AddIcon } from '@/assets/icons/plus.svg?react';
-import { ReactComponent as MinusIcon } from '@/assets/icons/minus.svg?react';
-import { ReactComponent as LinkIcon } from '@/assets/icons/link.svg?react';
-import { ReactComponent as DownloadIcon } from '@/assets/icons/save_as.svg?react';
-import { ReactComponent as CloseIcon } from '@/assets/icons/close.svg?react';
+import ReloadIcon from '@/assets/icons/reset.svg?react';
+import AddIcon from '@/assets/icons/plus.svg?react';
+import MinusIcon from '@/assets/icons/minus.svg?react';
+import LinkIcon from '@/assets/icons/link.svg?react';
+import DownloadIcon from '@/assets/icons/save_as.svg?react';
+// import CloseIcon from '@/assets/icons/close.svg?react';
+import { ReactComponent as CloseIcon } from '@/assets/icons/close.svg';
 
 export interface GalleryImage {
   src: string;

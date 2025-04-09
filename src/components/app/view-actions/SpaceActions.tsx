@@ -2,7 +2,7 @@ import { View } from '@/application/types';
 import { CircularProgress, IconButton, Tooltip } from '@mui/material';
 import React from 'react';
 import MoreIcon from '@/assets/icons/more.svg?react';
-import { ReactComponent as PlusIcon } from '@/assets/icons/plus.svg?react';
+import PlusIcon from '@/assets/icons/plus.svg?react';
 import { useTranslation } from 'react-i18next';
 
 function SpaceActions({

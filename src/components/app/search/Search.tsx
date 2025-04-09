@@ -7,11 +7,11 @@ import { createHotkey, createHotKeyLabel, HOT_KEY_NAME } from '@/utils/hotkeys';
 import { Button, Dialog, Divider, InputBase, Tooltip } from '@mui/material';
 import React, { useCallback, useEffect } from 'react';
 import SearchIcon from '@/assets/icons/search.svg?react';
-import { ReactComponent as CheckIcon } from '@/assets/icons/tick.svg?react';
-import { ReactComponent as DownIcon } from '@/assets/icons/alt_arrow_down.svg?react';
+import CheckIcon from '@/assets/icons/tick.svg?react';
+import DownIcon from '@/assets/icons/alt_arrow_down.svg?react';
 
 import { useTranslation } from 'react-i18next';
-import { ReactComponent as CloseIcon } from '@/assets/icons/close.svg?react';
+import CloseIcon from '@/assets/icons/close.svg?react';
 
 enum SEARCH_TYPE {
   AI_SUGGESTION = 'AI_SUGGESTION',
