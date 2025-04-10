@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import React, { useContext, useState } from 'react';
-import { ReactComponent as Logo } from '@/assets/icons/logo.svg';
+import Logo from '@/assets/icons/logo.svg';
 import { useTranslation } from 'react-i18next';
 
 function CheckEmail ({ email, redirectTo }: {
