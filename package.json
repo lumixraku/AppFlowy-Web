@@ -83,7 +83,7 @@
     "quill-delta": "^5.1.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
-    "react-big-calendar": "^1.8.5",
+    "react-big-calendar": "^1.16.1",
     "react-color": "^2.19.3",
     "react-custom-scrollbars": "^4.2.1",
     "react-custom-scrollbars-2": "^4.5.0",

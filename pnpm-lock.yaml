@@ -198,8 +198,8 @@ dependencies:
     specifier: ^13.1.1
     version: 13.1.1(react-dom@18.2.0)(react@18.2.0)
   react-big-calendar:
-    specifier: ^1.8.5
-    version: 1.12.2(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.16.1
+    version: 1.18.0(react-dom@18.2.0)(react@18.2.0)
   react-color:
     specifier: ^2.19.3
     version: 2.19.3(react@18.2.0)
@@ -3268,7 +3268,7 @@ packages:
       '@emotion/styled': 11.11.5(@emotion/react@11.14.0)(@types/react@18.2.66)(react@18.2.0)
       '@mui/private-theming': 5.15.14(@types/react@18.2.66)(react@18.2.0)
       '@mui/styled-engine': 5.15.14(@emotion/react@11.14.0)(@emotion/styled@11.11.5)(react@18.2.0)
-      '@mui/types': 7.2.20(@types/react@18.2.66)
+      '@mui/types': 7.2.24(@types/react@18.2.66)
       '@mui/utils': 5.15.14(@types/react@18.2.66)(react@18.2.0)
       '@types/react': 18.2.66
       clsx: 2.1.1
@@ -12032,11 +12032,11 @@ packages:
       - react-native
     dev: false
 
-  /react-big-calendar@1.12.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-cPVcwH5V1YiC6QKaV4afvpuZ2DtP8+TocnZY98nGodqq8bfjVDiP3Ch+TewBZzj9mg7JbewHdufDZXZBqQl1lw==}
+  /react-big-calendar@1.18.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bGrCdyfnCGe2qnIdEoGkGgQdEFOiGO1Tq7RLkI1a2t8ZudyEAKekFtneO2/ltKQEQK6zH76YdJ7vR9UMyD+ULw==}
     peerDependencies:
-      react: ^16.14.0 || ^17 || ^18
-      react-dom: ^16.14.0 || ^17 || ^18
+      react: ^16.14.0 || ^17 || ^18 || ^19
+      react-dom: ^16.14.0 || ^17 || ^18 || ^19
     dependencies:
       '@babel/runtime': 7.26.0
       clsx: 1.2.1
