@@ -206,6 +206,7 @@
     "vite-plugin-total-bundle-size": "^1.0.8"
   },
   "engines": {
-    "pnpm": "^8.0.0"
+    "pnpm": "^8.0.0",
+    "node": "^22.14.0"
   }
 }
