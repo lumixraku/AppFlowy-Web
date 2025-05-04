@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -72,33 +72,33 @@ export default defineConfig({
         },
       },
     }),
-    istanbul({
-      cypress: true,
-      requireEnv: false,
-      include: ['src/**/*'],
-      exclude: [
-        '**/__tests__/**/*',
-        'cypress/**/*',
-        'node_modules/**/*',
-      ],
-    }),
-    usePluginImport({
-      libraryName: '@mui/icons-material',
-      libraryDirectory: '',
-      camel2DashComponentName: false,
-      style: false,
-    }),
-    process.env.ANALYZE_MODE
-      ? visualizer({
-        emitFile: true,
-      })
-      : undefined,
-    process.env.ANALYZE_MODE
-      ? totalBundleSize({
-        fileNameRegex: /\.(js|css)$/,
-        calculateGzip: false,
-      })
-      : undefined,
+    // istanbul({
+    //   cypress: true,
+    //   requireEnv: false,
+    //   include: ['src/**/*'],
+    //   exclude: [
+    //     '**/__tests__/**/*',
+    //     'cypress/**/*',
+    //     'node_modules/**/*',
+    //   ],
+    // }),
+    // usePluginImport({
+    //   libraryName: '@mui/icons-material',
+    //   libraryDirectory: '',
+    //   camel2DashComponentName: false,
+    //   style: false,
+    // }),
+    // process.env.ANALYZE_MODE
+    //   ? visualizer({
+    //     emitFile: true,
+    //   })
+    //   : undefined,
+    // process.env.ANALYZE_MODE
+    //   ? totalBundleSize({
+    //     fileNameRegex: /\.(js|css)$/,
+    //     calculateGzip: false,
+    //   })
+    //   : undefined,
   ],
   // prevent vite from obscuring rust errors
   clearScreen: false,
@@ -109,15 +109,21 @@ export default defineConfig({
       ignored: ['node_modules'],
     },
     cors: false,
+    sourcemapIgnoreList: false, // 添加这行，不忽略任何文件
   },
   envPrefix: ['AF'],
   esbuild: {
+    keepNames: true,
+    sourcesContent: true,
+    sourcemap: true,
+    minifyIdentifiers: false, // 开发时禁用标识符压缩
+    minifySyntax: false,      // 开发时禁用语法压缩
     pure: !isDev ? ['console.log', 'console.debug', 'console.info', 'console.trace'] : [],
   },
   build: {
     target: `esnext`,
     reportCompressedSize: true,
-    sourcemap: isDev,
+    sourcemap: true, // 始终启用，不仅在 isDev 时
     rollupOptions: isProd
       ? {
 
