@@ -2,7 +2,6 @@ import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { visualizer } from 'rollup-plugin-visualizer';
-import usePluginImport from 'vite-plugin-importer';
 import { totalBundleSize } from 'vite-plugin-total-bundle-size';
 import path from 'path';
 import istanbul from 'vite-plugin-istanbul';
@@ -12,6 +11,7 @@ import { viteExternalsPlugin } from 'vite-plugin-externals';
 const resourcesPath = path.resolve(__dirname, '../resources');
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
+const isTest = process.env.NODE_ENV === 'test' || process.env.COVERAGE === 'true';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,7 +34,6 @@ export default defineConfig({
     isProd ? viteExternalsPlugin({
       react: 'React',
       'react-dom': 'ReactDOM',
-
     }) : undefined,
     svgr({
       svgrOptions: {
@@ -72,33 +71,28 @@ export default defineConfig({
         },
       },
     }),
-    // istanbul({
-    //   cypress: true,
-    //   requireEnv: false,
-    //   include: ['src/**/*'],
-    //   exclude: [
-    //     '**/__tests__/**/*',
-    //     'cypress/**/*',
-    //     'node_modules/**/*',
-    //   ],
-    // }),
-    // usePluginImport({
-    //   libraryName: '@mui/icons-material',
-    //   libraryDirectory: '',
-    //   camel2DashComponentName: false,
-    //   style: false,
-    // }),
-    // process.env.ANALYZE_MODE
-    //   ? visualizer({
-    //     emitFile: true,
-    //   })
-    //   : undefined,
-    // process.env.ANALYZE_MODE
-    //   ? totalBundleSize({
-    //     fileNameRegex: /\.(js|css)$/,
-    //     calculateGzip: false,
-    //   })
-    //   : undefined,
+    // Enable istanbul for code coverage (active if isTest is true)
+    isTest ? istanbul({
+      cypress: true,
+      requireEnv: false,
+      include: ['src/**/*'],
+      exclude: [
+        '**/__tests__/**/*',
+        'cypress/**/*',
+        'node_modules/**/*',
+      ],
+    }) : undefined,
+    process.env.ANALYZE_MODE
+      ? visualizer({
+        emitFile: true,
+      })
+      : undefined,
+    process.env.ANALYZE_MODE
+      ? totalBundleSize({
+        fileNameRegex: /\.(js|css)$/,
+        calculateGzip: false,
+      })
+      : undefined,
   ],
   // prevent vite from obscuring rust errors
   clearScreen: false,
@@ -109,21 +103,20 @@ export default defineConfig({
       ignored: ['node_modules'],
     },
     cors: false,
-    sourcemapIgnoreList: false, // 添加这行，不忽略任何文件
+    sourcemapIgnoreList: false,
   },
   envPrefix: ['AF'],
   esbuild: {
     keepNames: true,
     sourcesContent: true,
     sourcemap: true,
-    minifyIdentifiers: false, // 开发时禁用标识符压缩
-    minifySyntax: false,      // 开发时禁用语法压缩
+    minifyIdentifiers: false, // Disable identifier minification in development
+    minifySyntax: false,      // Disable syntax minification in development
     pure: !isDev ? ['console.log', 'console.debug', 'console.info', 'console.trace'] : [],
   },
   build: {
     target: `esnext`,
     reportCompressedSize: true,
-    sourcemap: true, // 始终启用，不仅在 isDev 时
     rollupOptions: isProd
       ? {
 
