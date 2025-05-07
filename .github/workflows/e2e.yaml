@@ -9,6 +9,7 @@ on:
 env:
   NODE_VERSION: 18
   PNPM_VERSION: 8.5.0
+  COVERAGE: "true"
 
 jobs:
   test:
@@ -36,8 +37,9 @@ jobs:
           build: pnpm run build
           start: pnpm run start
           browser: chrome
-        env:
-          COVERAGE: "true"
+
+      - name: Run Component Tests with Coverage
+        run: pnpm test:components:coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
