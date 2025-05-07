@@ -28,14 +28,21 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/codeQL
           sudo rm -rf ${GITHUB_WORKSPACE}/.git
           sudo rm -rf $ANDROID_HOME/ndk
+
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+
       - name: setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install
+        shell: bash
+
       - name: Jest run
         run: |
           pnpm run test:unit
