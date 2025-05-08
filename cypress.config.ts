@@ -15,7 +15,6 @@ export default defineConfig({
   },
   watchForFileChanges: false,
   component: {
-    specPattern: '**/DatabaseWithFilter.cy.tsx',
     devServer: {
       framework: 'react',
       bundler: 'vite',
