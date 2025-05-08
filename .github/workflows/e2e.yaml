@@ -38,8 +38,11 @@ jobs:
           start: pnpm run start
           browser: chrome
 
-      - name: Run Component Tests with Coverage
-        run: pnpm test:components:parallel
+      - name: Run Component Tests
+        run: |
+          echo "Starting component tests..."
+          pnpm test:components:parallel
+          echo "Component tests finished."
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
