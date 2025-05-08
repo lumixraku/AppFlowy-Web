@@ -15,13 +15,15 @@ export default defineConfig({
   },
   watchForFileChanges: false,
   component: {
+    // src/components/editor/__tests__/blocks/Paragraph.cy.tsx
+    specPattern: '**/*.cy.tsx',
     devServer: {
       framework: 'react',
       bundler: 'vite',
     },
     setupNodeEvents(on, config) {
       codeCoverageTask(on, config);
-      
+
       // 在测试完成后生成报告
       on('after:run', async () => {
         try {
@@ -51,28 +53,8 @@ export default defineConfig({
     supportFile: 'cypress/support/component.ts',
   },
   e2e: {
-    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    // 优化内存使用，减少每个测试的内存占用
-    numTestsKeptInMemory: 0,
-    // 优化超时设置
-    defaultCommandTimeout: 10000,
-    requestTimeout: 10000,
-    responseTimeout: 10000, 
-    // 优化测试隔离
-    testIsolation: true,
-    // 优化页面加载
-    pageLoadTimeout: 30000,
-    // 优化重试策略
-    retries: {
-      runMode: 2,
-      openMode: 0,
-    },
-    // 优化视频和截图
-    video: false,
-    screenshotOnRunFailure: true,
-    // 优化浏览器配置
-    chromeWebSecurity: false,
-    // 优化文件监听
-    watchForFileChanges: false,
+    specPattern: '**/*.cy.ts',
+    supportFile: 'cypress/support/e2e.ts',
+    baseUrl: 'http://localhost:3000/',
   },
 });
