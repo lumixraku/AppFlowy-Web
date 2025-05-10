@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // https://eslint.org/docs/latest/use/configure/configuration-files
   env: {
     browser: true,
