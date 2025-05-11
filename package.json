@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.20.8"
+  },
   "scripts": {
     "dev": "vite",
     "dev:coverage": "cross-env COVERAGE=true vite",
@@ -34,7 +37,7 @@
     "@floating-ui/react": "^0.26.27",
     "@jest/globals": "^29.7.0",
     "@mui/icons-material": "^5.11.11",
-    "@mui/material": "6.0.0-alpha.2",
+    "@mui/material": "^6.4.11",
     "@mui/x-date-pickers-pro": "^6.18.2",
     "@radix-ui/react-avatar": "^1.1.3",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -177,7 +180,7 @@
     "chalk": "^4.1.2",
     "cheerio": "1.0.0-rc.12",
     "cross-env": "^7.0.3",
-    "cypress": "^13.7.2",
+    "cypress": "14.3.3",
     "cypress-image-snapshot": "^4.0.1",
     "cypress-real-events": "^1.13.0",
     "eslint": "^8.57.0",
@@ -213,5 +216,6 @@
     "vite-plugin-svgr": "^3.2.0",
     "vite-plugin-terminal": "^1.2.0",
     "vite-plugin-total-bundle-size": "^1.0.7"
-  }
+  },
+  "packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f"
 }
