@@ -18,19 +18,11 @@ jobs:
   test:
     if: github.event.pull_request.draft != true
     runs-on: ubuntu-22.04
+    container:
+      image: cypress/included:14.3.3
+      options: --user 1001
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Maximize build space (ubuntu only)
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          sudo docker image prune --all --force
-          sudo rm -rf /opt/hostedtoolcache/codeQL
-          sudo rm -rf ${GITHUB_WORKSPACE}/.git
-          sudo rm -rf $ANDROID_HOME/ndk
       
       - name: setup node
         uses: actions/setup-node@v4
@@ -44,18 +36,6 @@ jobs:
       
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      
-      # 直接使用 npm 安装 Cypress 二进制文件
-      - name: Install Cypress binary
-        run: |
-          # 使用 npm 直接安装 Cypress
-          npm install cypress@14.3.3 --save-dev
-          # 验证安装
-          npx cypress verify
-          # 显示 Cypress 版本
-          npx cypress version
-          # 显示二进制文件路径
-          npx cypress info
       
       - name: Cypress run
         uses: cypress-io/github-action@v6
