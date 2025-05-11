@@ -18,25 +18,28 @@ jobs:
   test:
     if: github.event.pull_request.draft != true
     runs-on: ubuntu-22.04
-    container:
-      image: cypress/included:14.3.3
-      options: --user 1001
     steps:
       - uses: actions/checkout@v4
-      
+      - name: Maximize build space (ubuntu only)
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo docker image prune --all --force
+          sudo rm -rf /opt/hostedtoolcache/codeQL
+          sudo rm -rf ${GITHUB_WORKSPACE}/.git
+          sudo rm -rf $ANDROID_HOME/ndk
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-      
       - name: setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
-      
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      
+      # Install pnpm dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -49,11 +52,12 @@ jobs:
       - name: Jest run
         run: |
           pnpm run test:unit
+
         env:
           COVERAGE: "true"        
       
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           token: cf9245e0-e136-4e21-b0ee-35755fa0c493
           files: coverage/jest/lcov.info, coverage/cypress/lcov.info
