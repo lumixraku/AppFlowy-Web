@@ -59,6 +59,9 @@
   "references": [
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.application.json"
     }
   ]
 }
