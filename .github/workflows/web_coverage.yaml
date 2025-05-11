@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+      
       - name: Maximize build space (ubuntu only)
         run: |
           sudo rm -rf /usr/share/dotnet
@@ -30,16 +31,32 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/codeQL
           sudo rm -rf ${GITHUB_WORKSPACE}/.git
           sudo rm -rf $ANDROID_HOME/ndk
+      
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+      
       - name: setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
-      # Install pnpm dependencies, cache them correctly
-      # and run all Cypress tests
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      # 直接使用 npm 安装 Cypress 二进制文件
+      - name: Install Cypress binary
+        run: |
+          # 使用 npm 直接安装 Cypress
+          npm install cypress@14.3.3 --save-dev
+          # 验证安装
+          npx cypress verify
+          # 显示 Cypress 版本
+          npx cypress version
+          # 显示二进制文件路径
+          npx cypress info
+      
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -53,10 +70,10 @@ jobs:
         run: |
           pnpm run test:unit
         env:
-          COVERAGE: "true"
-
+          COVERAGE: "true"        
+      
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4
         with:
           token: cf9245e0-e136-4e21-b0ee-35755fa0c493
           files: coverage/jest/lcov.info, coverage/cypress/lcov.info
