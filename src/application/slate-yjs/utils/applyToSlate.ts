@@ -12,7 +12,7 @@ import { findSlateEntryByBlockId } from '@/application/slate-yjs/utils/editor';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type BlockMapEvent = YMapEvent<any>
 
-export function translateYEvents(editor: YjsEditor, events: Array<YEvent>) {
+export function translateYEvents(editor: YjsEditor, events: Array<YEvent<any>>) {
   console.log('=== Translating Yjs events ===', events);
 
   events.forEach((event) => {
