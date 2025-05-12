@@ -38,14 +38,16 @@ jobs:
         uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
+          
+      - name: Install dependencies
+        run: pnpm install
+        
       # Install pnpm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         run: |
-          # 构建和启动应用
           pnpm run build
-          pnpm run start &
-          npx wait-on http://localhost:3000 --timeout 120000
+          pnpm run start
           npx cypress run --component --browser chrome
         env:
           COVERAGE: "true"
