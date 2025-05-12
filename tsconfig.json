@@ -46,7 +46,6 @@
   },
   "include": [
     "src",
-    "vite.config.ts",
     "cypress.config.ts",
     "cypress",
     "deploy/server.ts"

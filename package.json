@@ -134,7 +134,7 @@
     "validator": "^13.11.0",
     "vite-plugin-wasm": "^3.3.0",
     "y-indexeddb": "9.0.12",
-    "yjs": "14.0.0-1"
+    "yjs": "14.0.0-5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.7",
