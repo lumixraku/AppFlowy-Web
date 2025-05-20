@@ -143,7 +143,7 @@ function ColorHighlight() {
                                             </>
                                         ) : (
                                             <div
-                                                className="w-full h-full rounded-200 border border-tertiary"
+                                                className="w-full h-full rounded-200 border border-background-tertiary"
                                                 style={{
                                                     backgroundColor: renderColor(color.color),
                                                 }}

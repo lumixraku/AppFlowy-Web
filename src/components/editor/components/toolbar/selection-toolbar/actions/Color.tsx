@@ -135,7 +135,7 @@ function Color() {
                     <div
                       className={`absolute top-0 left-0 h-full w-full cursor-pointer rounded-200 border opacity-50 hover:opacity-100`}
                       style={{
-                        borderColor: activeFontColor === color.color ? 'var(--fill-default)' : undefined,
+                        borderColor: activeFontColor === color.color ? color.color : 'var(--background-tertiary)',
                         color: renderColor(color.color) || 'var(--text-title)',
                         opacity: color.color ? undefined : 1,
                       }}
