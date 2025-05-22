@@ -19,7 +19,7 @@ interface AddCommentProps {
   fixed: boolean;
 }
 
-function AddComment ({ content, setContent, focus, setFocus, fixed }: AddCommentProps) {
+function AddComment({ content, setContent, focus, setFocus, fixed }: AddCommentProps) {
   const { reload, replyCommentId, replyComment: setReplyCommentId } = useGlobalCommentContext();
 
   const { t } = useTranslation();
@@ -65,7 +65,7 @@ function AddComment ({ content, setContent, focus, setFocus, fixed }: AddComment
           },
         });
       }
-    } catch (_e) {
+    } catch {
       notify.error(t('globalComment.failedToAddComment'));
     } finally {
       setLoading(false);

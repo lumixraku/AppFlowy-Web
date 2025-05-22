@@ -60,7 +60,7 @@ function ApproveRequestPage() {
       const plans = await service.getActiveSubscription(requestInfo.workspace.id);
 
       setCurrentPlans(plans);
-    } catch (e) {
+    } catch {
       setErrorModalOpen(true);
       setClicked(true);
     }
@@ -103,7 +103,7 @@ function ApproveRequestPage() {
       const link = await service.getSubscriptionLink(workspaceId, plan, SubscriptionInterval.Month);
 
       window.open(link, '_blank');
-    } catch (e) {
+    } catch {
       notify.error('Failed to get subscription link');
     }
   }, [requestInfo, service, isPro]);

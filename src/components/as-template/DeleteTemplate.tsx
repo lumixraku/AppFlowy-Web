@@ -4,7 +4,7 @@ import { useService } from '@/components/main/app.hooks';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function DeleteTemplate ({ onDeleted, id, onClose, open }: {
+function DeleteTemplate({ onDeleted, id, onClose, open }: {
   id: string;
   onClose: () => void;
   open: boolean;
@@ -18,7 +18,7 @@ function DeleteTemplate ({ onDeleted, id, onClose, open }: {
       onClose();
       onDeleted?.();
       notify.success(t('template.deleteSuccess'));
-    } catch (error) {
+    } catch {
       notify.error('Failed to delete template');
     }
   }, [t, onClose, service, id, onDeleted]);

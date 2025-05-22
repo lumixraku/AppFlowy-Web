@@ -164,7 +164,7 @@ export function getOutlineExpands() {
 
   try {
     return JSON.parse(expandView || '{}');
-  } catch (e) {
+  } catch {
     return {};
   }
 }

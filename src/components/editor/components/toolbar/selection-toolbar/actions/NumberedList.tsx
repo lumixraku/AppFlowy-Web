@@ -25,7 +25,7 @@ export function NumberedList() {
       }
 
       CustomEditor.turnToBlock(editor, node.blockId as string, BlockType.NumberedListBlock, {});
-    } catch (e) {
+    } catch {
       return;
     }
   }, [editor]);

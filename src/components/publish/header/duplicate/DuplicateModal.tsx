@@ -10,7 +10,7 @@ import { PublishContext } from '@/application/publish';
 import { Types, ViewLayout } from '@/application/types';
 import { notify } from '@/components/_shared/notify';
 
-function getCollabTypeFromViewLayout (layout: ViewLayout) {
+function getCollabTypeFromViewLayout(layout: ViewLayout) {
   switch (layout) {
     case ViewLayout.Document:
       return Types.Document;
@@ -23,7 +23,7 @@ function getCollabTypeFromViewLayout (layout: ViewLayout) {
   }
 }
 
-function DuplicateModal ({ open, onClose }: { open: boolean; onClose: () => void }) {
+function DuplicateModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t } = useTranslation();
   const service = useContext(AFConfigContext)?.service;
   const viewMeta = useContext(PublishContext)?.viewMeta;
@@ -75,7 +75,7 @@ function DuplicateModal ({ open, onClose }: { open: boolean; onClose: () => void
       onClose();
       setSuccessModalOpen(true);
       setNewViewId(newViewId);
-    } catch (e) {
+    } catch {
       setNewViewId(undefined);
       notify.error(t('publish.duplicateFailed'));
     } finally {

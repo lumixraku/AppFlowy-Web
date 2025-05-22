@@ -56,19 +56,19 @@ export const CustomEditor = {
   getSelectionContent(editor: YjsEditor, range?: Range) {
     const at = range || editor.selection;
 
-    if(!at) return '';
+    if (!at) return '';
 
     return editor.string(at);
   },
   // Get the text content of a block node, including the text content of its children and formula nodes
   getBlockTextContent(node: Node, depth = Infinity): string {
-    if(Text.isText(node)) {
-      if(node.formula) {
+    if (Text.isText(node)) {
+      if (node.formula) {
         return node.formula;
       }
 
-      if(node.mention) {
-        if(node.mention.type === MentionType.Date) {
+      if (node.mention) {
+        if (node.mention.type === MentionType.Date) {
           const date = node.mention.date || '';
           const isUnix = date?.length === 10;
 
@@ -83,7 +83,7 @@ export const CustomEditor = {
       return node.text || '';
     }
 
-    if(depth <= 0) {
+    if (depth <= 0) {
       return ''; // Prevent infinite recursion
     }
 
@@ -106,7 +106,7 @@ export const CustomEditor = {
     } as Partial<Element>;
     const entry = findSlateEntryByBlockId(editor, blockId);
 
-    if(!entry) {
+    if (!entry) {
       console.error('Block not found');
       return;
     }
@@ -115,15 +115,15 @@ export const CustomEditor = {
     let atChild = false;
     const { selection } = editor;
 
-    if(selection && Path.isAncestor(path, selection.anchor.path)) {
+    if (selection && Path.isAncestor(path, selection.anchor.path)) {
       atChild = true;
     }
 
     Transforms.setNodes(editor, newProperties, { at: path });
 
-    if(!select) return;
+    if (!select) return;
 
-    if(atChild) {
+    if (atChild) {
       Transforms.select(editor, Editor.start(editor, path));
     }
 
@@ -135,7 +135,7 @@ export const CustomEditor = {
 
     const isCollapsed = Range.isCollapsed(newAt);
 
-    if(isCollapsed) {
+    if (isCollapsed) {
       handleCollapsedBreakWithTxn(editor, sharedRoot, newAt);
     } else {
       handleRangeBreak(editor, sharedRoot, newAt);
@@ -151,7 +151,7 @@ export const CustomEditor = {
 
     const isCollapsed = Range.isCollapsed(newAt);
 
-    if(isCollapsed) {
+    if (isCollapsed) {
       const point = newAt.anchor;
 
       const blockEntry = getBlockEntry(editor, point);
@@ -161,16 +161,16 @@ export const CustomEditor = {
       const blockType = block.get(YjsEditorKey.block_type);
       const parent = getParent(node.blockId as string, sharedRoot);
 
-      if(blockType !== BlockType.Paragraph && parent?.get(YjsEditorKey.block_type) === BlockType.QuoteBlock && LIST_BLOCK_TYPES.includes(blockType)) {
+      if (blockType !== BlockType.Paragraph && parent?.get(YjsEditorKey.block_type) === BlockType.QuoteBlock && LIST_BLOCK_TYPES.includes(blockType)) {
         handleNonParagraphBlockBackspaceAndEnterWithTxn(editor, sharedRoot, block, point);
         return;
       }
 
-      if(path.length > 1 && handleLiftBlockOnBackspaceAndEnterWithTxn(editor, sharedRoot, block, point)) {
+      if (path.length > 1 && handleLiftBlockOnBackspaceAndEnterWithTxn(editor, sharedRoot, block, point)) {
         return;
       }
 
-      if(blockType !== BlockType.Paragraph) {
+      if (blockType !== BlockType.Paragraph) {
         handleNonParagraphBlockBackspaceAndEnterWithTxn(editor, sharedRoot, block, point);
         return;
       }
@@ -189,7 +189,7 @@ export const CustomEditor = {
 
     const isCollapsed = Range.isCollapsed(newAt);
 
-    if(isCollapsed) {
+    if (isCollapsed) {
       const point = newAt.anchor;
 
       const blockEntry = getBlockEntry(editor, point);
@@ -216,15 +216,15 @@ export const CustomEditor = {
     const sharedRoot = getSharedRoot(editor);
     const { selection } = editor;
 
-    if(!selection) return;
+    if (!selection) return;
     const [point, endPoint] = editor.edges(selection);
     const { middleBlocks, startBlock: node, endBlock: endNode } = getAffectedBlocks(editor, selection);
 
-    if(type === 'tabBackward' && preventLiftNode(editor, node[0].blockId as string)) {
+    if (type === 'tabBackward' && preventLiftNode(editor, node[0].blockId as string)) {
       return;
     }
 
-    if(type === 'tabForward' && preventIndentNode(editor, node[0].blockId as string)) {
+    if (type === 'tabForward' && preventIndentNode(editor, node[0].blockId as string)) {
       return;
     }
 
@@ -243,7 +243,7 @@ export const CustomEditor = {
     const isSameBlock = node[0].blockId === endNode[0].blockId;
 
     editor.deselect();
-    if(isSameBlock) {
+    if (isSameBlock) {
       const block = getBlock(node[0].blockId as string, sharedRoot);
       let newBlockId: string | undefined;
 
@@ -251,7 +251,7 @@ export const CustomEditor = {
         newBlockId = type === 'tabForward' ? indentBlock(sharedRoot, block) : liftBlock(sharedRoot, block);
       }], type === 'tabForward' ? 'indentBlock' : 'liftBlock');
 
-      if(!newBlockId) return;
+      if (!newBlockId) return;
       const newBlockEntry = findSlateEntryByBlockId(editor, newBlockId);
 
       newStartBlockPath = newBlockEntry[1];
@@ -264,17 +264,17 @@ export const CustomEditor = {
         const blockId = entry[0].blockId as string;
         const block = getBlock(blockId, sharedRoot);
 
-        if(!block) return;
+        if (!block) return;
 
         executeOperations(sharedRoot, [() => {
           const newBlockId = type === 'tabForward' ? indentBlock(sharedRoot, block) : liftBlock(sharedRoot, block, index);
 
-          if(newBlockId) {
+          if (newBlockId) {
             newBlockIds.push(newBlockId);
           }
         }], type === 'tabForward' ? 'indentBlock' : 'liftBlock');
       });
-      if(newBlockIds.length === 0) return;
+      if (newBlockIds.length === 0) return;
       const newStartBlockEntry = findSlateEntryByBlockId(editor, newBlockIds[0]);
       const newEndBlockEntry = findSlateEntryByBlockId(editor, newBlockIds[newBlockIds.length - 1]);
 
@@ -302,13 +302,13 @@ export const CustomEditor = {
     const data = dataStringTOJson(getBlock(blockId, sharedRoot).get(YjsEditorKey.block_data)) as ToggleListBlockData;
     const { selection } = editor;
 
-    if(selection && Range.isExpanded(selection)) {
+    if (selection && Range.isExpanded(selection)) {
       Transforms.collapse(editor, { edge: 'start' });
     }
 
     let selected = false;
 
-    if(selection) {
+    if (selection) {
       const point = Editor.start(editor, selection);
 
       const [node] = getBlockEntry(editor, point);
@@ -327,7 +327,7 @@ export const CustomEditor = {
     const data = dataStringTOJson(block.get(YjsEditorKey.block_data)) as TodoListBlockData;
     const checked = data.checked;
 
-    if(!shiftKey) {
+    if (!shiftKey) {
       CustomEditor.setBlockData(editor, blockId, {
         checked: !checked,
       }, false);
@@ -360,7 +360,7 @@ export const CustomEditor = {
   }: {
     key: EditorMarkFormat, value: boolean | string
   }) {
-    if(CustomEditor.isMarkActive(editor, key)) {
+    if (CustomEditor.isMarkActive(editor, key)) {
       CustomEditor.removeMark(editor, key);
     } else {
       CustomEditor.addMark(editor, {
@@ -392,7 +392,7 @@ export const CustomEditor = {
     const sourceType = sourceBlock.get(YjsEditorKey.block_type);
     const oldData = dataStringTOJson(sourceBlock.get(YjsEditorKey.block_data));
 
-    if(sourceType === type && isEqual(oldData, data)) {
+    if (sourceType === type && isEqual(oldData, data)) {
       return;
     }
 
@@ -411,7 +411,7 @@ export const CustomEditor = {
       const [node] = getBlockEntry(editor);
 
       return node.type === type;
-    } catch(e) {
+    } catch {
       return false;
     }
   },
@@ -419,18 +419,18 @@ export const CustomEditor = {
   hasMark(editor: ReactEditor, key: string) {
     const selection = editor.selection;
 
-    if(!selection) return false;
+    if (!selection) return false;
 
     const isExpanded = Range.isExpanded(selection);
 
-    if(isExpanded) {
+    if (isExpanded) {
 
       const texts = getSelectionTexts(editor);
 
       return texts.some((node) => {
         const { text, ...attributes } = node;
 
-        if(!text) return true;
+        if (!text) return true;
         return Boolean((attributes as Record<string, boolean | string>)[key]);
       });
     }
@@ -443,17 +443,17 @@ export const CustomEditor = {
   getAllMarks(editor: ReactEditor) {
     const selection = editor.selection;
 
-    if(!selection) return [];
+    if (!selection) return [];
 
     const isExpanded = Range.isExpanded(selection);
 
-    if(isExpanded) {
+    if (isExpanded) {
       const texts = getSelectionTexts(editor);
 
       return texts.map((node) => {
         const { text, ...attributes } = node;
 
-        if(!text) return {};
+        if (!text) return {};
         return attributes as EditorInlineAttributes;
       });
     }
@@ -467,18 +467,18 @@ export const CustomEditor = {
     try {
       const selection = editor.selection;
 
-      if(!selection) return false;
+      if (!selection) return false;
 
       const isExpanded = Range.isExpanded(selection);
 
-      if(isExpanded) {
+      if (isExpanded) {
 
         const texts = getSelectionTexts(editor);
 
         return texts.every((node) => {
           const { text, ...attributes } = node;
 
-          if(!text) return true;
+          if (!text) return true;
           return Boolean((attributes as Record<string, boolean | string>)[key]);
         });
 
@@ -487,7 +487,7 @@ export const CustomEditor = {
       const marks = Editor.marks(editor) as Record<string, string | boolean> | null;
 
       return marks ? !!marks[key] : false;
-    } catch(e) {
+    } catch {
       return false;
     }
 
@@ -497,7 +497,7 @@ export const CustomEditor = {
     const sharedRoot = getSharedRoot(editor);
     const parent = getBlock(blockId, sharedRoot);
 
-    if(!parent) {
+    if (!parent) {
       console.warn('Parent block not found');
       return;
     }
@@ -507,7 +507,7 @@ export const CustomEditor = {
       data,
     }, parent, 0);
 
-    if(!newBlockId) {
+    if (!newBlockId) {
       console.warn('Failed to add block');
       return;
     }
@@ -515,14 +515,14 @@ export const CustomEditor = {
     try {
       const [, path] = findSlateEntryByBlockId(editor, newBlockId);
 
-      if(path) {
+      if (path) {
         ReactEditor.focus(editor);
         const point = editor.start(path);
 
         Transforms.select(editor, point);
         return newBlockId;
       }
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   },
@@ -531,28 +531,28 @@ export const CustomEditor = {
     const parent = getParent(blockId, editor.sharedRoot);
     const index = getBlockIndex(blockId, editor.sharedRoot);
 
-    if(!parent) return;
+    if (!parent) return;
 
     const newBlockId = addBlock(editor, {
       ty: type,
       data,
     }, parent, direction === 'below' ? index + 1 : index);
 
-    if(!newBlockId) {
+    if (!newBlockId) {
       return;
     }
 
     try {
       const [, path] = findSlateEntryByBlockId(editor, newBlockId);
 
-      if(path) {
+      if (path) {
         ReactEditor.focus(editor);
         const point = editor.start(path);
 
         Transforms.select(editor, point);
         return newBlockId;
       }
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
   },
@@ -569,7 +569,7 @@ export const CustomEditor = {
     const sharedRoot = getSharedRoot(editor);
     const parent = getParent(blockId, sharedRoot);
 
-    if(!parent) {
+    if (!parent) {
       console.warn('Parent block not found');
       return;
     }
@@ -578,8 +578,8 @@ export const CustomEditor = {
       const prevBlockId = getPreviousSiblingBlock(sharedRoot, getBlock(blockId, sharedRoot));
       let point: BasePoint | undefined;
 
-      if(!prevBlockId) {
-        if(parent.get(YjsEditorKey.block_type) !== BlockType.Page) {
+      if (!prevBlockId) {
+        if (parent.get(YjsEditorKey.block_type) !== BlockType.Page) {
           const [, path] = findSlateEntryByBlockId(editor, parent.get(YjsEditorKey.block_id));
 
           point = editor.start(path);
@@ -590,7 +590,7 @@ export const CustomEditor = {
         point = editor.end(path);
       }
 
-      if(point && ReactEditor.hasRange(editor, {
+      if (point && ReactEditor.hasRange(editor, {
         anchor: point,
         focus: point,
       })) {
@@ -599,7 +599,7 @@ export const CustomEditor = {
         Transforms.deselect(editor);
       }
 
-    } catch(e) {
+    } catch {
       // do nothing
     }
 
@@ -608,7 +608,7 @@ export const CustomEditor = {
     }], 'deleteBlock');
     const children = editor.children;
 
-    if(children.length === 0) {
+    if (children.length === 0) {
       addBlock(editor, {
         ty: BlockType.Paragraph,
         data: {},
@@ -625,7 +625,7 @@ export const CustomEditor = {
     const parent = getParent(blockId, sharedRoot);
     const prevIndex = getBlockIndex(prevId || blockId, sharedRoot);
 
-    if(!parent) {
+    if (!parent) {
       console.warn('Parent block not found');
       return;
     }
@@ -635,7 +635,7 @@ export const CustomEditor = {
     executeOperations(sharedRoot, [() => {
       newBlockId = deepCopyBlock(sharedRoot, block);
 
-      if(!newBlockId) {
+      if (!newBlockId) {
         console.warn('Copied block not found');
         return;
       }
@@ -649,7 +649,7 @@ export const CustomEditor = {
   },
 
   pastedText(editor: YjsEditor, text: string) {
-    if(!beforePasted(editor))
+    if (!beforePasted(editor))
       return;
 
     const point = editor.selection?.anchor as BasePoint;
@@ -660,16 +660,16 @@ export const CustomEditor = {
   highlight(editor: ReactEditor) {
     const selection = editor.selection;
 
-    if(!selection) return;
+    if (!selection) return;
 
     const [start, end] = Range.edges(selection);
 
-    if(isEqual(start, end)) return;
+    if (isEqual(start, end)) return;
 
     const marks = CustomEditor.getAllMarks(editor);
 
     marks.forEach((mark) => {
-      if(mark[EditorMarkFormat.BgColor]) {
+      if (mark[EditorMarkFormat.BgColor]) {
         CustomEditor.removeMark(editor, EditorMarkFormat.BgColor);
       } else {
         CustomEditor.addMark(editor, {

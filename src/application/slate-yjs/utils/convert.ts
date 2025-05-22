@@ -102,7 +102,7 @@ export function traverseBlock(id: string, sharedRoot: YSharedRoot): Element | un
 
     children.unshift(textNode);
     return slateNode;
-  } catch (e) {
+  } catch {
     return;
   }
 }
@@ -120,7 +120,7 @@ export function yDataToSlateContent(sharedRoot: YSharedRoot): Element | undefine
     if (!result) return;
 
     return result;
-  } catch (e) {
+  } catch {
     return;
   }
 }

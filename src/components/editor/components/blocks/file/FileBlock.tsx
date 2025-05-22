@@ -127,7 +127,7 @@ export const FileBlock = memo(
           url_type: FieldURLType.Upload,
           retry_local_url: '',
         } as FileBlockData);
-      } catch (e) {
+      } catch {
         // do nothing
       } finally {
         setLoading(false);
@@ -152,7 +152,7 @@ export const FileBlock = memo(
           className={`embed-block items-center p-4`}
         >
           <div className={'flex items-start h-full'}>
-            <FileIcon className={'w-6 h-6'}/>
+            <FileIcon className={'w-6 h-6'} />
           </div>
 
           <div
@@ -172,15 +172,15 @@ export const FileBlock = memo(
           </div>
 
           {needRetry && (
-            loading ? (<CircularProgress size={16}/>) :
+            loading ? (<CircularProgress size={16} />) :
               <Tooltip placement={'top'} title={t('web.fileBlock.retry')}>
                 <IconButton onClick={handleRetry} size={'small'} color={'error'}>
-                  <ReloadIcon/>
+                  <ReloadIcon />
                 </IconButton>
               </Tooltip>
           )}
           {showToolbar && url && (
-            <FileToolbar node={node}/>
+            <FileToolbar node={node} />
           )}
         </div>
         <div

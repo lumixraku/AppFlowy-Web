@@ -16,7 +16,7 @@ export function parseChecklistData(data: string): ChecklistCellData | null {
       options,
       selectedOptionIds: selected_option_ids,
     };
-  } catch (e) {
+  } catch {
     return null;
   }
 }

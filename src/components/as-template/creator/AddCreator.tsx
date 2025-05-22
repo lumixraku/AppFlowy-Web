@@ -10,7 +10,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { ReactComponent as AddIcon } from '@/assets/icons/plus.svg';
 import { useTranslation } from 'react-i18next';
 
-function AddCreator ({ searchText, onCreated }: {
+function AddCreator({ searchText, onCreated }: {
   searchText: string;
   onCreated: () => void;
 }) {
@@ -35,7 +35,7 @@ function AddCreator ({ searchText, onCreated }: {
       await service?.createTemplateCreator(data);
       onCreated();
       handleClose();
-    } catch (error) {
+    } catch {
       notify.error('Failed to create creator');
     }
   }, [onCreated, service, handleClose]);

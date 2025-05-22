@@ -22,7 +22,7 @@ function VideoBlockPopoverContent({
   const entry = useMemo(() => {
     try {
       return findSlateEntryByBlockId(editor, blockId);
-    } catch(e) {
+    } catch {
       return null;
     }
   }, [blockId, editor]);

@@ -1,13 +1,10 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enableProjectReferences": true,
-  "typescript.preferences.importModuleSpecifier": "non-relative"  
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "relative", // Disable the default formatter, use eslint instead
   "editor.rulers": [
     120
   ],
-  "javascript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.importModuleSpecifier": "relative",
-  // Disable the default formatter, use eslint instead
   "search.followSymlinks": false,
   "search.exclude": {
     "**/node_modules": true,
@@ -21,13 +18,17 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.cjs"
+  },
+  "eslint.debug": true,
+  "eslint.trace.server": "verbose",
+  "eslint.useFlatConfig": false,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
     }
   ],
-  // Enable the ESlint flat config support
-  "eslint.useFlatConfig": true,
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     {

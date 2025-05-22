@@ -9,7 +9,7 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as CloseIcon } from '@/assets/icons/close.svg';
 
-function MobileWorkspaces ({
+function MobileWorkspaces({
   onClose,
 }: {
   onClose: () => void;
@@ -39,7 +39,7 @@ function MobileWorkspaces ({
     setChangeLoading(selectedId);
     try {
       await handleSelectedWorkspace?.(selectedId);
-    } catch (e) {
+    } catch {
       notify.error('Failed to change workspace');
     }
 

@@ -35,7 +35,7 @@ export function getTokenParsed(): {
 
   try {
     return JSON.parse(token);
-  } catch (e) {
+  } catch {
     return null;
   }
 }

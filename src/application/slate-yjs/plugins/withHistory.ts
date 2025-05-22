@@ -81,7 +81,7 @@ export function withYHistory<T extends YjsEditor>(
       );
 
       stackItem.meta.set('selectionBefore', LAST_SELECTION.get(e));
-    } catch (e) {
+    } catch {
       // console.error(e);
     }
 

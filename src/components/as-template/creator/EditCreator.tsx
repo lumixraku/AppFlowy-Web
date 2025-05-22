@@ -6,7 +6,7 @@ import CreatorForm from '@/components/as-template/creator/CreatorForm';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function EditCreator ({
+function EditCreator({
   creator,
   onUpdated,
   openModal,
@@ -26,7 +26,7 @@ function EditCreator ({
       await service?.updateTemplateCreator(creator.id, data);
       onUpdated();
       onClose();
-    } catch (error) {
+    } catch {
       notify.error('Failed to update creator');
     }
   }, [onUpdated, service, onClose, creator.id]);

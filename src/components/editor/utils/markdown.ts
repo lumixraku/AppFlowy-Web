@@ -20,14 +20,12 @@ enum SpecialSymbol {
   RIGHTWARDS_SINGLE_ARROW = '→',
 }
 
-type TriggerHotKey = {
-  [K in BlockType | EditorMarkFormat | SpecialSymbol]?: string[];
-};
+type TriggerHotKey = Partial<Record<BlockType | EditorMarkFormat | SpecialSymbol, string[]>>;
 
 const defaultTriggerChar: TriggerHotKey = {
   [BlockType.HeadingBlock]: [' '],
   [BlockType.QuoteBlock]: [' '],
-  [BlockType.CodeBlock]: ['`'],
+  [BlockType.CodeBlock as keyof TriggerHotKey]: ['`'],
   [BlockType.BulletedListBlock]: [' '],
   [BlockType.NumberedListBlock]: [' '],
   [BlockType.TodoListBlock]: [' '],

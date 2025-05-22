@@ -4,13 +4,13 @@ import { getFontFamily } from '@/utils/font';
 import { useEffect, useMemo } from 'react';
 import { ViewMetaCover } from '@/application/types';
 
-export function useViewMeta () {
+export function useViewMeta() {
   const viewMeta = usePublishContext()?.viewMeta;
 
   const extra = useMemo(() => {
     try {
       return viewMeta?.extra ? JSON.parse(viewMeta.extra) : null;
-    } catch (e) {
+    } catch {
       return null;
     }
   }, [viewMeta?.extra]);

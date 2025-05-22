@@ -67,8 +67,9 @@ module.exports = {
     'no-void': 'off',
     'prefer-const': 'error',
     'prefer-spread': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      'warn',
       {
         argsIgnorePattern: '_|e',
         varsIgnorePattern: '_|e',

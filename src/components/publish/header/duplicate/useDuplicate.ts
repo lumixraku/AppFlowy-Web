@@ -4,7 +4,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { notify } from '@/components/_shared/notify';
 
-export function useDuplicate () {
+export function useDuplicate() {
   const isAuthenticated = useContext(AFConfigContext)?.isAuthenticated || false;
   const [search, setSearch] = useSearchParams();
   const [loginOpen, setLoginOpen] = React.useState(false);
@@ -46,7 +46,7 @@ export function useDuplicate () {
   };
 }
 
-export function useLoadWorkspaces () {
+export function useLoadWorkspaces() {
   const currentUser = useContext(AFConfigContext)?.currentUser;
   const isAuthenticated = useContext(AFConfigContext)?.isAuthenticated && Boolean(currentUser) || false;
   const [spaceLoading, setSpaceLoading] = useState<boolean>(false);
@@ -78,7 +78,7 @@ export function useLoadWorkspaces () {
         setWorkspaceList([]);
         setSelectedWorkspaceId('');
       }
-    } catch (e) {
+    } catch {
       notify.error('Failed to load workspaces');
     } finally {
       setWorkspaceLoading(false);
@@ -111,7 +111,7 @@ export function useLoadWorkspaces () {
           setSpaceList([]);
         }
       } catch (e) {
-        console.error('Failed to load spaces');
+        console.error('Failed to load spaces', e);
       } finally {
         setSelectedSpaceId('');
         setSpaceLoading(false);

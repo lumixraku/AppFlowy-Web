@@ -48,7 +48,7 @@ export function Heading() {
           }
 
           CustomEditor.turnToBlock<HeadingBlockData>(editor, node.blockId as string, BlockType.HeadingBlock, { level });
-        } catch (e) {
+        } catch {
           return;
         }
       };
@@ -64,7 +64,7 @@ export function Heading() {
         const isBlock = CustomEditor.isBlockActive(editor, BlockType.HeadingBlock);
 
         return isBlock && (node.data as HeadingBlockData).level === level;
-      } catch (e) {
+      } catch {
         return false;
       }
     },

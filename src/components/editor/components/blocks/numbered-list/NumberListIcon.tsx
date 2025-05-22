@@ -10,7 +10,7 @@ enum Letter {
   Roman = 'roman',
 }
 
-function getLetterNumber (index: number, letter: Letter) {
+function getLetterNumber(index: number, letter: Letter) {
   if (letter === Letter.Number) {
     return index;
   } else if (letter === Letter.Letter) {
@@ -20,7 +20,7 @@ function getLetterNumber (index: number, letter: Letter) {
   }
 }
 
-export function NumberListIcon ({ block, className }: { block: NumberedListNode; className: string }) {
+export function NumberListIcon({ block, className }: { block: NumberedListNode; className: string }) {
   const editor = useSlate();
 
   const path = ReactEditor.findPath(editor, block);
@@ -55,7 +55,7 @@ export function NumberListIcon ({ block, className }: { block: NumberedListNode;
 
         prevPath = Path.previous(prevPath);
       }
-    } catch (e) {
+    } catch {
       // do nothing
     }
 

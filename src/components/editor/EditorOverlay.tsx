@@ -39,7 +39,7 @@ function EditorOverlay({
     if (!start) return null;
     try {
       return getBlockEntry(editor, start);
-    } catch (e) {
+    } catch {
       return null;
     }
   }, [editor, start]);
@@ -49,7 +49,7 @@ function EditorOverlay({
     try {
       return getBlockEntry(editor, end);
 
-    } catch (e) {
+    } catch {
       return null;
     }
   }, [editor, end]);
@@ -72,7 +72,7 @@ function EditorOverlay({
         const [, path] = findSlateEntryByBlockId(editor, blockId);
 
         editor.select(editor.end(path));
-      } catch (e) {
+      } catch {
         //
       }
     } catch (e) {

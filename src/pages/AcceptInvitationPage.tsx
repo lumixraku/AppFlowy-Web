@@ -153,7 +153,7 @@ function AcceptInvitationPage() {
                   window.open(`${origin}/app/${invitation?.workspace_id}`, '_current');
                 },
               });
-            } catch (e) {
+            } catch {
               notify.error('Failed to join workspace');
             }
           }}

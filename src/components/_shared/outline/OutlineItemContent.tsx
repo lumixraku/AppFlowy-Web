@@ -27,15 +27,15 @@ function OutlineItemContent({
 
   return (
     <div
-      onClick={async() => {
-        if(isSpace || (!item.is_published && variant === 'publish')) {
+      onClick={async () => {
+        if (isSpace || (!item.is_published && variant === 'publish')) {
           setIsExpanded(prev => !prev);
           return;
         }
 
         try {
           await navigateToView?.(view_id);
-        } catch(e) {
+        } catch {
           // do nothing
         }
       }}

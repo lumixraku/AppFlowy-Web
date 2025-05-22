@@ -88,7 +88,7 @@ export function initAPIService(config: AFCloudConfig) {
           const newToken = await refreshToken(refresh_token);
 
           access_token = newToken?.access_token || '';
-        } catch (e) {
+        } catch {
           invalidToken();
           return config;
         }
@@ -122,7 +122,7 @@ export function initAPIService(config: AFCloudConfig) {
 
       try {
         await refreshToken(refresh_token);
-      } catch (e) {
+      } catch {
         invalidToken();
       }
     }
@@ -151,7 +151,7 @@ export async function signInWithUrl(url: string) {
 
   try {
     await verifyToken(accessToken);
-  } catch (e) {
+  } catch {
     return Promise.reject({
       code: -1,
       message: 'Verify token failed',
@@ -160,7 +160,7 @@ export async function signInWithUrl(url: string) {
 
   try {
     await refreshToken(refresh_token);
-  } catch (e) {
+  } catch {
     return Promise.reject({
       code: -1,
       message: 'Refresh token failed',
@@ -651,7 +651,7 @@ export async function getAppOutline(workspaceId: string) {
   return Promise.reject(data);
 }
 
-export async function getView(workspaceId: string, viewId: string, depth: number = 1) {
+export async function getView(workspaceId: string, viewId: string, depth = 1) {
   const url = `/api/workspace/${workspaceId}/folder?depth=${depth}&root_view_id=${viewId}`;
   const response = await axiosInstance?.get<{
     code: number;

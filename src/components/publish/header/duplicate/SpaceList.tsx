@@ -26,7 +26,7 @@ function SpaceList({ loading, spaceList, value, onChange, title }: SpaceListProp
           space_icon_color?: string;
         })
         : {};
-    } catch (e) {
+    } catch {
       return {};
     }
   }, []);
@@ -45,7 +45,7 @@ function SpaceList({ loading, spaceList, value, onChange, title }: SpaceListProp
           />
           <div className={'flex flex-1 items-center gap-2 truncate'}>
             {space.name}
-            {space.isPrivate && <LockSvg className={'text-icon-primary'}/>}
+            {space.isPrivate && <LockSvg className={'text-icon-primary'} />}
           </div>
         </div>
       );
@@ -58,7 +58,7 @@ function SpaceList({ loading, spaceList, value, onChange, title }: SpaceListProp
       {title || <div className={'text-sm text-text-caption'}>{t('publish.addTo')}</div>}
       {loading ? (
         <div className={'flex w-full items-center justify-center'}>
-          <CircularProgress size={24}/>
+          <CircularProgress size={24} />
         </div>
       ) : (
         <div className={'appflowy-scroller flex w-full flex-1 flex-col gap-1 overflow-y-auto overflow-x-hidden'}>
@@ -83,7 +83,7 @@ function SpaceList({ loading, spaceList, value, onChange, title }: SpaceListProp
                 >
                   <div className={'flex-1 overflow-hidden text-left'}>{renderSpace(space)}</div>
                   <div className={'h-5 w-5'}>
-                    {isSelected && <CheckIcon className={'h-5 w-5 text-content-blue-400'}/>}
+                    {isSelected && <CheckIcon className={'h-5 w-5 text-content-blue-400'} />}
                   </div>
                 </Button>
               </Tooltip>

@@ -31,7 +31,7 @@ export const LinkPreview = memo(
           const data = response.data.data;
 
           setData(data);
-        } catch (_) {
+        } catch {
           setNotFound(true);
         }
       })();

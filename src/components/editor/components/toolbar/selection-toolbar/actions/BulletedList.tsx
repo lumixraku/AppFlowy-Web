@@ -25,7 +25,7 @@ export function BulletedList() {
       }
 
       CustomEditor.turnToBlock(editor, node.blockId as string, BlockType.BulletedListBlock, {});
-    } catch (e) {
+    } catch {
       return;
     }
   }, [editor]);

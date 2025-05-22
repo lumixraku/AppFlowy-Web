@@ -28,17 +28,17 @@ export const DatabaseBlock = memo(
     const [doc, setDoc] = useState<YDoc | null>(null);
 
     useEffect(() => {
-      if(!viewId) return;
-      void (async() => {
+      if (!viewId) return;
+      void (async () => {
         try {
           const view = await loadView?.(viewId);
 
-          if(!view) {
+          if (!view) {
             throw new Error('View not found');
           }
 
           setDoc(view);
-        } catch(e) {
+        } catch {
           setNotFound(true);
         }
       })();
@@ -49,8 +49,8 @@ export const DatabaseBlock = memo(
     const [iidName, setIidName] = useState<string>('');
 
     useEffect(() => {
-      const updateVisibleViewIds = async(meta: View | null) => {
-        if(!meta) {
+      const updateVisibleViewIds = async (meta: View | null) => {
+        if (!meta) {
           return;
         }
 
@@ -58,7 +58,7 @@ export const DatabaseBlock = memo(
 
         viewIds.unshift(meta.view_id);
 
-        if(!viewIds.includes(viewId)) {
+        if (!viewIds.includes(viewId)) {
           setSelectedViewId(viewIds[0]);
         } else {
           setSelectedViewId(viewId);
@@ -68,22 +68,22 @@ export const DatabaseBlock = memo(
         setVisibleViewIds(viewIds);
       };
 
-      void (async() => {
+      void (async () => {
         try {
           const meta = await loadViewMeta?.(viewId, updateVisibleViewIds);
 
-          if(meta) {
+          if (meta) {
             await updateVisibleViewIds(meta);
           }
-        } catch(e) {
+        } catch {
           setNotFound(true);
         }
       })();
     }, [loadViewMeta, viewId]);
 
     const handleNavigateToRow = useCallback(
-      async(rowId: string) => {
-        if(!viewId) return;
+      async (rowId: string) => {
+        if (!viewId) return;
         await navigateToView?.(viewId, rowId);
       },
       [navigateToView, viewId],
@@ -97,17 +97,17 @@ export const DatabaseBlock = memo(
 
       return database?.get(YjsDatabaseKey.views)?.get(selectedViewId);
     }, [doc, selectedViewId]);
-    const handleRendered = useCallback(async(height: number) => {
+    const handleRendered = useCallback(async (height: number) => {
       const container = containerRef.current;
 
-      if(!container) return;
-      if(height > 0) {
+      if (!container) return;
+      if (height > 0) {
         container.style.height = `${height}px`;
       }
 
       const layout = Number(selectedView?.get(YjsDatabaseKey.layout));
 
-      if(layout !== DatabaseViewLayout.Calendar) {
+      if (layout !== DatabaseViewLayout.Calendar) {
         container.style.maxHeight = '550px';
       }
 
@@ -121,7 +121,7 @@ export const DatabaseBlock = memo(
       const editorDom = ReactEditor.toDOMNode(editor, editor);
       const scrollContainer = getScrollParent(editorDom) as HTMLElement;
 
-      if(!editorDom || !scrollContainer) return;
+      if (!editorDom || !scrollContainer) return;
 
       const onResize = () => {
 
@@ -147,7 +147,7 @@ export const DatabaseBlock = memo(
           contentEditable={readOnly ? false : undefined}
           className={`relative w-full cursor-pointer`}
           onMouseEnter={() => {
-            if(variant === UIVariant.App) {
+            if (variant === UIVariant.App) {
 
               setShowActions(true);
             }

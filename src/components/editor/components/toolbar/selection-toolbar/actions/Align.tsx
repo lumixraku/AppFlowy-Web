@@ -54,7 +54,7 @@ export function Align({ blockId, enabled = true }: { blockId?: string; enabled?:
       const node = getNode();
 
       return (node.data as BlockData).align;
-    } catch (e) {
+    } catch {
       return;
     }
   }, [getNode]);
@@ -96,7 +96,7 @@ export function Align({ blockId, enabled = true }: { blockId?: string; enabled?:
           handleClose();
 
           rePosition();
-        } catch (e) {
+        } catch {
           return;
         }
       };

@@ -128,7 +128,7 @@ export const ImageBlock = memo(
             image_type: ImageType.External,
             retry_local_url: '',
           } as ImageBlockData);
-        } catch (e) {
+        } catch {
           // do noting
         } finally {
           setLoading(false);
@@ -152,9 +152,8 @@ export const ImageBlock = memo(
       >
         <div
           contentEditable={false}
-          className={`embed-block relative ${alignCss} ${
-            url || needRetry ? '!rounded-none !border-none !bg-transparent' : 'p-4'
-          }`}
+          className={`embed-block relative ${alignCss} ${url || needRetry ? '!rounded-none !border-none !bg-transparent' : 'p-4'
+            }`}
         >
           {url || needRetry ? (
             <ImageRender showToolbar={showToolbar} selected={selected} node={node} localUrl={localUrl} />

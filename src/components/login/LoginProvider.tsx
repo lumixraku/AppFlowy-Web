@@ -30,7 +30,7 @@ const moreOptionsVariants = {
   },
 };
 
-function LoginProvider ({ redirectTo }: { redirectTo: string }) {
+function LoginProvider({ redirectTo }: { redirectTo: string }) {
   const { t } = useTranslation();
   const [expand, setExpand] = React.useState(false);
   const options = useMemo(
@@ -76,7 +76,7 @@ function LoginProvider ({ redirectTo }: { redirectTo: string }) {
           await service?.signInDiscord({ redirectTo });
           break;
       }
-    } catch (e) {
+    } catch {
       notify.error(t('web.signInError'));
     }
   }, [service, t, redirectTo]);

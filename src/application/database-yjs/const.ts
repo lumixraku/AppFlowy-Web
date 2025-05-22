@@ -22,7 +22,7 @@ export const metaIdFromRowId = (rowId: string) => {
 
   try {
     namespace = uuidParse(rowId);
-  } catch (e) {
+  } catch {
     namespace = uuidParse(generateUUID());
   }
 

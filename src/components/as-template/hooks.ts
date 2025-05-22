@@ -3,7 +3,7 @@ import { notify } from '@/components/_shared/notify';
 import { useService } from '@/components/main/app.hooks';
 import { useCallback, useMemo, useState } from 'react';
 
-export function useLoadCategoryTemplates () {
+export function useLoadCategoryTemplates() {
   const [loading, setLoading] = useState(false);
 
   const [templates, setTemplates] = useState<TemplateSummary[]>([]);
@@ -32,7 +32,7 @@ export function useLoadCategoryTemplates () {
 
 }
 
-export function useLoadTemplate (id: string) {
+export function useLoadTemplate(id: string) {
   const [loading, setLoading] = useState(false);
   const [template, setTemplate] = useState<Template | null>(null);
   const service = useService();
@@ -43,7 +43,7 @@ export function useLoadTemplate (id: string) {
 
       if (!data) return;
       setTemplate(data);
-    } catch (error) {
+    } catch {
       // don't show error notification
     } finally {
       setLoading(false);
@@ -57,7 +57,7 @@ export function useLoadTemplate (id: string) {
   };
 }
 
-export function useLoadCategories (props?: {
+export function useLoadCategories(props?: {
   searchText?: string;
 }) {
   const searchText = props?.searchText || '';
@@ -90,7 +90,7 @@ export function useLoadCategories (props?: {
   };
 }
 
-export function useLoadCreators ({
+export function useLoadCreators({
   searchText,
 }: {
   searchText: string;
@@ -105,7 +105,7 @@ export function useLoadCreators ({
 
       if (!data) throw new Error('Failed to fetch creators');
       setCreators(data);
-    } catch (error) {
+    } catch {
       notify.error('Failed to fetch creators');
     } finally {
       setLoading(false);

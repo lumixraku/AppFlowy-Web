@@ -12,7 +12,7 @@ import { FileHandler } from '@/utils/file';
 import FileDropzone from '@/components/_shared/file-dropzone/FileDropzone';
 import { findSlateEntryByBlockId } from '@/application/slate-yjs/utils/editor';
 
-function ImageBlockPopoverContent ({
+function ImageBlockPopoverContent({
   blockId,
   onClose,
 }: {
@@ -26,7 +26,7 @@ function ImageBlockPopoverContent ({
   const entry = useMemo(() => {
     try {
       return findSlateEntryByBlockId(editor, blockId);
-    } catch (e) {
+    } catch {
       return null;
     }
   }, [blockId, editor]);

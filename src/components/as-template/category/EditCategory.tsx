@@ -9,7 +9,7 @@ import CategoryForm from '@/components/as-template/category/CategoryForm';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function EditCategory ({
+function EditCategory({
   category,
   onUpdated,
   openModal,
@@ -29,7 +29,7 @@ function EditCategory ({
       await service?.updateTemplateCategory(category.id, data);
       onUpdated();
       onClose();
-    } catch (error) {
+    } catch {
       notify.error('Failed to update category');
     }
   }, [onUpdated, onClose, service, category.id]);

@@ -25,7 +25,7 @@ export function Quote() {
       }
 
       CustomEditor.turnToBlock(editor, node.blockId as string, BlockType.QuoteBlock, {});
-    } catch (e) {
+    } catch {
       return;
     }
   }, [editor]);

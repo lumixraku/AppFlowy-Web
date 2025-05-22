@@ -9,7 +9,7 @@ export function parseSelectOptionTypeOptions(field: YDatabaseField) {
 
   try {
     return JSON.parse(content) as SelectTypeOption;
-  } catch (e) {
+  } catch {
     return null;
   }
 }

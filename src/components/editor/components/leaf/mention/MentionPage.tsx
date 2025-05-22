@@ -101,7 +101,7 @@ function MentionPage({
             handleBlockChange();
 
             return;
-          } catch (e) {
+          } catch {
             // do nothing
           }
         }

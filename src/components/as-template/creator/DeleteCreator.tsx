@@ -4,7 +4,7 @@ import { useService } from '@/components/main/app.hooks';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function DeleteCreator ({ id, onClose, onDeleted, open }: {
+function DeleteCreator({ id, onClose, onDeleted, open }: {
   id: string;
   onClose: () => void;
   onDeleted: () => void;
@@ -17,7 +17,7 @@ function DeleteCreator ({ id, onClose, onDeleted, open }: {
       await service?.deleteTemplateCreator(id);
       onDeleted();
       onClose();
-    } catch (error) {
+    } catch {
       notify.error('Failed to delete creator');
     }
   }, [onDeleted, onClose, service, id]);

@@ -4,7 +4,7 @@ import { useService } from '@/components/main/app.hooks';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function DeleteCategory ({ id, onClose, onDeleted, open }: {
+function DeleteCategory({ id, onClose, onDeleted, open }: {
   id: string;
   onClose: () => void;
   onDeleted: () => void;
@@ -17,7 +17,7 @@ function DeleteCategory ({ id, onClose, onDeleted, open }: {
       await service?.deleteTemplateCategory(id);
       onDeleted();
       onClose();
-    } catch (error) {
+    } catch {
       notify.error('Failed to delete category');
     }
   }, [onDeleted, onClose, service, id]);

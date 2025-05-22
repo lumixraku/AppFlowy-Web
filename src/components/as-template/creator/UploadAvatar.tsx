@@ -35,7 +35,7 @@ function UploadAvatar({ onChange }: { onChange: (url: string) => void }) {
         if (!url) throw new Error('Failed to upload file');
         onChange(url);
         setUploadStatus('success');
-      } catch (error) {
+      } catch {
         onChange('');
         setUploadStatus('error');
       }

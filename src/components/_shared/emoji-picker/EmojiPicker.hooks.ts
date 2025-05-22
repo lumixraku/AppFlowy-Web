@@ -17,7 +17,7 @@ interface Emoji {
   native: string;
 }
 
-export function useLoadEmojiData ({ onEmojiSelect }: { onEmojiSelect: (emoji: string) => void }) {
+export function useLoadEmojiData({ onEmojiSelect }: { onEmojiSelect: (emoji: string) => void }) {
   const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -71,7 +71,7 @@ export function useLoadEmojiData ({ onEmojiSelect }: { onEmojiSelect: (emoji: st
         }
 
         setEmojiCategories(filteredCategories);
-      } catch (_e) {
+      } catch {
         notify.error('Failed to load emoji data');
         setIsEmpty(true);
       }
@@ -110,7 +110,7 @@ export function useLoadEmojiData ({ onEmojiSelect }: { onEmojiSelect: (emoji: st
   };
 }
 
-export function useSelectSkinPopoverProps (): PopoverProps & {
+export function useSelectSkinPopoverProps(): PopoverProps & {
   onOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onClose: () => void;
 } {
@@ -135,7 +135,7 @@ export function useSelectSkinPopoverProps (): PopoverProps & {
   };
 }
 
-function filterSearchValue (
+function filterSearchValue(
   emoji: {
     name: string;
     keywords?: string[];
@@ -151,7 +151,7 @@ function filterSearchValue (
   );
 }
 
-export function getRowsWithCategories (emojiCategories: EmojiCategory[], rowSize: number) {
+export function getRowsWithCategories(emojiCategories: EmojiCategory[], rowSize: number) {
   const rows: {
     id: string;
     type: 'category' | 'emojis';

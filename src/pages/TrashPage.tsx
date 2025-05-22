@@ -57,7 +57,7 @@ function TrashPage() {
       if (!currentWorkspaceId) return;
       try {
         await loadTrash?.(currentWorkspaceId);
-      } catch (e) {
+      } catch {
         notify.error('Failed to load trash');
       }
     })();
@@ -89,7 +89,7 @@ function TrashPage() {
               }
             }
           >
-            <RestoreIcon/>
+            <RestoreIcon />
           </IconButton>
         </Tooltip>
         <Tooltip title={t('button.delete')}>
@@ -100,7 +100,7 @@ function TrashPage() {
             }}
             className={'hover:text-function-error'}
           >
-            <TrashIcon/>
+            <TrashIcon />
           </IconButton>
         </Tooltip>
       </div>;
@@ -141,14 +141,14 @@ function TrashPage() {
             <Button
               size={'small'}
               onClick={() => handleRestore()}
-              startIcon={<RestoreIcon/>}
+              startIcon={<RestoreIcon />}
               color={'inherit'}
             >{t('trash.restoreAll')}</Button>
             <Button
               size={'small'}
               className={'hover:text-function-error'}
               onClick={() => setDeleteViewId('all')}
-              startIcon={<TrashIcon/>}
+              startIcon={<TrashIcon />}
               color={'inherit'}
             >{t('trash.deleteAll')}</Button>
           </div> : null}
@@ -156,9 +156,9 @@ function TrashPage() {
         </div>
         <div className={'flex flex-col gap-2 w-full flex-1 overflow-hidden'}>
           {!trashList ? <TableSkeleton
-              rows={8}
-              columns={4}
-            /> :
+            rows={8}
+            columns={4}
+          /> :
             <TableContainer
               className={'appflowy-scroller'}
               sx={{ maxHeight: '100%' }}

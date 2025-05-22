@@ -8,7 +8,7 @@ import { OutlinedInput } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function CreateSpaceModal ({ open, onClose, onCreated }: {
+function CreateSpaceModal({ open, onClose, onCreated }: {
   open: boolean;
   onClose: () => void;
   onCreated?: (spaceId: string) => void;
@@ -33,7 +33,7 @@ function CreateSpaceModal ({ open, onClose, onCreated }: {
 
       onClose();
 
-      onCreated && onCreated(spaceId);
+      onCreated?.(spaceId);
       // eslint-disable-next-line
     } catch (e: any) {
       notify.error(e.message);

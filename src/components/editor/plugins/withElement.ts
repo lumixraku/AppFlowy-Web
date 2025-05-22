@@ -31,7 +31,7 @@ export const withElement = (editor: ReactEditor) => {
         return true;
       }
 
-    } catch (e) {
+    } catch {
       //
     }
 

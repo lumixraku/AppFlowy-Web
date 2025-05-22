@@ -12,7 +12,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { ReactComponent as AddIcon } from '@/assets/icons/plus.svg';
 import { useTranslation } from 'react-i18next';
 
-function AddCategory ({ searchText, onCreated }: {
+function AddCategory({ searchText, onCreated }: {
   searchText: string;
   onCreated: () => void;
 }) {
@@ -33,7 +33,7 @@ function AddCategory ({ searchText, onCreated }: {
       await service?.addTemplateCategory(data);
       onCreated();
       setOpenModal(false);
-    } catch (error) {
+    } catch {
       notify.error('Failed to add category');
     }
   }, [onCreated, service]);
