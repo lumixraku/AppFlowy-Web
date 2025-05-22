@@ -41,6 +41,7 @@ module.exports = {
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/triple-slash-reference': 'error',
     '@typescript-eslint/unified-signatures': 'error',
+    '@typescript-eslint/no-extraneous-class': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'off',
     'constructor-super': 'error',

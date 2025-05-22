@@ -5,13 +5,13 @@ import { YBlock, YjsEditorKey } from '@/application/types';
 import isEqual from 'lodash-es/isEqual';
 import { Editor, Element, NodeEntry } from 'slate';
 import { YEvent, YMapEvent, YTextEvent } from 'yjs';
-import * as Y from 'yjs';
 import { dataStringTOJson, getBlock, getChildrenArray, getPageId, getText } from '@/application/slate-yjs/utils/yjs';
 import { findSlateEntryByBlockId } from '@/application/slate-yjs/utils/editor';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type BlockMapEvent = YMapEvent<any>
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function translateYEvents(editor: YjsEditor, events: YEvent<any>[]) {
   console.log('=== Translating Yjs events ===', events);
 

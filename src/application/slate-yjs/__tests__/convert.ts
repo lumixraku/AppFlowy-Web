@@ -32,6 +32,7 @@ export async function runCollaborationTest() {
   const remote = withTestingYjsEditor(createEditor(), remoteDoc);
 
   // Apply changes from 'run'
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   Y.applyUpdateV2(remoteDoc, Y.encodeStateAsUpdateV2(yjsEditor.sharedRoot.doc!));
 
   // Verify remote and editor state are equal

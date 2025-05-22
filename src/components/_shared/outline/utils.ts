@@ -1,6 +1,6 @@
 import { View, ViewLayout } from '@/application/types';
 
-export function filterViews (views: View[], keyword: string): View[] {
+export function filterViews(views: View[], keyword: string): View[] {
   const filterAndFlatten = (views: View[]): View[] => {
     let result: View[] = [];
 
@@ -22,7 +22,7 @@ export function filterViews (views: View[], keyword: string): View[] {
   return filterAndFlatten(views);
 }
 
-export function findViewByLayout (views: View[], layout: ViewLayout[]): View | null {
+export function findViewByLayout(views: View[], layout: ViewLayout[]): View | null {
   for (const view of views) {
     if (layout.includes(view.layout) && !view.extra?.is_space) {
       return view;
@@ -40,7 +40,7 @@ export function findViewByLayout (views: View[], layout: ViewLayout[]): View | n
   return null;
 }
 
-export function filterOutViewsByLayout (views: View[], layout: ViewLayout): View[] {
+export function filterOutViewsByLayout(views: View[], layout: ViewLayout): View[] {
   const filterOut = (views: View[]): View[] => {
     const result: View[] = [];
 
@@ -60,7 +60,7 @@ export function filterOutViewsByLayout (views: View[], layout: ViewLayout): View
   return filterOut(views);
 }
 
-export function filterViewsByCondition (views: View[], condition: (view: View) => boolean): View[] {
+export function filterViewsByCondition(views: View[], condition: (view: View) => boolean): View[] {
   const filter = (views: View[]): View[] => {
     let result: View[] = [];
 
@@ -82,7 +82,7 @@ export function filterViewsByCondition (views: View[], condition: (view: View) =
   return filter(views);
 }
 
-export function filterOutByCondition (views: View[], condition: (view: View) => {
+export function filterOutByCondition(views: View[], condition: (view: View) => {
   remove: boolean;
 }): View[] {
   const filterOut = (views: View[]): View[] => {
@@ -107,7 +107,7 @@ export function filterOutByCondition (views: View[], condition: (view: View) => 
   return filterOut(views);
 }
 
-export function findAncestors (data: View[], targetId: string, currentPath: View[] = []): View[] | null {
+export function findAncestors(data: View[], targetId: string, currentPath: View[] = []): View[] | null {
   for (const item of data) {
     const newPath = [...currentPath, item];
 
@@ -127,7 +127,7 @@ export function findAncestors (data: View[], targetId: string, currentPath: View
   return null;
 }
 
-export function findView (data: View[], targetId: string): View | null {
+export function findView(data: View[], targetId: string): View | null {
   for (const item of data) {
     if (item.view_id === targetId) {
       return item;
@@ -145,7 +145,7 @@ export function findView (data: View[], targetId: string): View | null {
   return null;
 }
 
-export function flattenViews (views: View[]): View[] {
+export function flattenViews(views: View[]): View[] {
   const result: View[] = [];
 
   for (const view of views) {
@@ -159,7 +159,7 @@ export function flattenViews (views: View[]): View[] {
   return result;
 }
 
-export function getOutlineExpands () {
+export function getOutlineExpands() {
   const expandView = localStorage.getItem('outline_expanded');
 
   try {
@@ -169,12 +169,13 @@ export function getOutlineExpands () {
   }
 }
 
-export function setOutlineExpands (viewId: string, isExpanded: boolean) {
+export function setOutlineExpands(viewId: string, isExpanded: boolean) {
   const expands = getOutlineExpands();
 
   if (isExpanded) {
     expands[viewId] = true;
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete expands[viewId];
   }
 

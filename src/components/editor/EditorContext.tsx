@@ -72,7 +72,7 @@ export const EditorContextProvider = ({ children, ...props }: EditorContextState
     setDecorateState((prev) => {
       const oldValue = prev[type];
 
-      if(oldValue && Range.equals(oldValue.range, range) && oldValue.class_name === class_name) {
+      if (oldValue && Range.equals(oldValue.range, range) && oldValue.class_name === class_name) {
         return prev;
       }
 
@@ -88,12 +88,13 @@ export const EditorContextProvider = ({ children, ...props }: EditorContextState
 
   const removeDecorate = useCallback((type: string) => {
     setDecorateState((prev) => {
-      if(prev[type] === undefined) {
+      if (prev[type] === undefined) {
         return prev;
       }
 
       const newState = { ...prev };
 
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete newState[type];
       return newState;
     });

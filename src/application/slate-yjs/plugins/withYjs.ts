@@ -17,6 +17,7 @@ export interface YjsEditor extends Editor {
   connect: () => void;
   disconnect: () => void;
   sharedRoot: YSharedRoot;
+  //eslint-disable-next-line  @typescript-eslint/no-explicit-any
   applyRemoteEvents: (events: YEvent<any>[], transaction: Transaction) => void;
   flushLocalChanges: () => void;
   storeLocalChange: (op: Operation) => void;
@@ -53,6 +54,7 @@ export const YjsEditor = {
     editor.disconnect();
   },
 
+  //eslint-disable-next-line  @typescript-eslint/no-explicit-any
   applyRemoteEvents(editor: YjsEditor, events: YEvent<any>[], transaction: Transaction): void {
     editor.applyRemoteEvents(events, transaction);
   },
@@ -137,6 +139,7 @@ export function withYjs<T extends Editor>(
     apply(op);
   };
 
+  //eslint-disable-next-line  @typescript-eslint/no-explicit-any
   e.applyRemoteEvents = (events: YEvent<any>[], transaction: Transaction) => {
     console.time('applyRemoteEvents');
     // Flush local changes to ensure all local changes are applied before processing remote events
@@ -168,6 +171,7 @@ export function withYjs<T extends Editor>(
     console.timeEnd('applyRemoteEvents');
   };
 
+  //eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const handleYEvents = (events: YEvent<any>[], transaction: Transaction) => {
     if (transaction.origin === CollabOrigin.Local) return;
     YjsEditor.applyRemoteEvents(e, events, transaction);

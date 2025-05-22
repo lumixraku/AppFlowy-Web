@@ -295,6 +295,7 @@ const rules: Rule[] = [
 
       if (!selection) return;
       const path = selection.anchor.path;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const start = match.index!;
 
       editor.insertText(text);
@@ -317,6 +318,7 @@ const rules: Rule[] = [
 
       if (!selection) return;
       const path = selection.anchor.path;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const start = match.index!;
 
       editor.insertText('$');

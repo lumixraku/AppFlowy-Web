@@ -61,6 +61,7 @@ class FileStorage {
     };
 
     return new Promise((resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const transaction = this.db!.transaction(this.storeName, 'readwrite');
       const store = transaction.objectStore(this.storeName);
       const request = store.put(fileData);
@@ -76,6 +77,7 @@ class FileStorage {
     if (!this.db) throw new Error('Database not initialized');
 
     return new Promise((resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const transaction = this.db!.transaction(this.storeName, 'readonly');
       const store = transaction.objectStore(this.storeName);
       const request = store.get(id);
@@ -91,6 +93,7 @@ class FileStorage {
     if (!this.db) throw new Error('Database not initialized');
 
     return new Promise((resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const transaction = this.db!.transaction(this.storeName, 'readwrite');
       const store = transaction.objectStore(this.storeName);
       const request = store.delete(id);
@@ -106,6 +109,7 @@ class FileStorage {
     if (!this.db) throw new Error('Database not initialized');
 
     return new Promise((resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion    
       const transaction = this.db!.transaction(this.storeName, 'readonly');
       const store = transaction.objectStore(this.storeName);
       const request = store.getAll();
@@ -121,6 +125,7 @@ class FileStorage {
     if (!this.db) throw new Error('Database not initialized');
 
     return new Promise((resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const transaction = this.db!.transaction(this.storeName, 'readwrite');
       const store = transaction.objectStore(this.storeName);
       const request = store.clear();
@@ -182,6 +187,7 @@ export class FileHandler {
       if (this.fileUrls.has(id)) {
         return {
           ...fileData,
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           url: this.fileUrls.get(id)!,
         };
       }
@@ -204,7 +210,9 @@ export class FileHandler {
   // Clean up single file and its resources
   async cleanup(id: string): Promise<void> {
     if (this.fileUrls.has(id)) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       URL.revokeObjectURL(this.fileUrls.get(id)!);
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       this.fileUrls.delete(id);
     }
 

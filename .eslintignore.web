@@ -5,3 +5,8 @@ tsconfig.json
 vite.config.ts
 vite-env.d.ts
 coverage/
+jest.config.js
+scripts/**/*.js
+tailwind/*.js
+postcss.config.js
+tailwind.config.js
