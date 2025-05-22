@@ -2,7 +2,7 @@ import { YDatabaseSort, YjsDatabaseKey } from '@/application/types';
 import * as Y from 'yjs';
 import * as sortsJson from './fixtures/sorts.json';
 
-export function withRichTextSort(isAscending: boolean = true) {
+export function withRichTextSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_text_field : sortsJson.sort_desc_text_field;
 
@@ -13,7 +13,7 @@ export function withRichTextSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withUrlSort(isAscending: boolean = true) {
+export function withUrlSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_url_field : sortsJson.sort_desc_url_field;
 
@@ -24,7 +24,7 @@ export function withUrlSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withNumberSort(isAscending: boolean = true) {
+export function withNumberSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_number_field : sortsJson.sort_desc_number_field;
 
@@ -35,7 +35,7 @@ export function withNumberSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withCheckboxSort(isAscending: boolean = true) {
+export function withCheckboxSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_checkbox_field : sortsJson.sort_desc_checkbox_field;
 
@@ -46,7 +46,7 @@ export function withCheckboxSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withDateTimeSort(isAscending: boolean = true) {
+export function withDateTimeSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_date_field : sortsJson.sort_desc_date_field;
 
@@ -57,7 +57,7 @@ export function withDateTimeSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withSingleSelectOptionSort(isAscending: boolean = true) {
+export function withSingleSelectOptionSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_single_select_field : sortsJson.sort_desc_single_select_field;
 
@@ -68,7 +68,7 @@ export function withSingleSelectOptionSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withMultiSelectOptionSort(isAscending: boolean = true) {
+export function withMultiSelectOptionSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_multi_select_field : sortsJson.sort_desc_multi_select_field;
 
@@ -79,7 +79,7 @@ export function withMultiSelectOptionSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withChecklistSort(isAscending: boolean = true) {
+export function withChecklistSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_checklist_field : sortsJson.sort_desc_checklist_field;
 
@@ -90,7 +90,7 @@ export function withChecklistSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withCreatedAtSort(isAscending: boolean = true) {
+export function withCreatedAtSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_created_at : sortsJson.sort_desc_created_at;
 
@@ -101,7 +101,7 @@ export function withCreatedAtSort(isAscending: boolean = true) {
   return sort;
 }
 
-export function withLastModifiedSort(isAscending: boolean = true) {
+export function withLastModifiedSort(isAscending = true) {
   const sort = new Y.Map() as YDatabaseSort;
   const sortJSON = isAscending ? sortsJson.sort_asc_updated_at : sortsJson.sort_desc_updated_at;
 

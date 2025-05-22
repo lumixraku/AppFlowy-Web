@@ -38,7 +38,7 @@ export function calculateOptimalOrigins (
   popoverWidth: number,
   popoverHeight: number,
   defaultOrigins: Origins = DEFAULT_ORIGINS,
-  spacing: number = 8,
+  spacing = 8,
 ): Origins {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;

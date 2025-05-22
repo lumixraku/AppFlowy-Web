@@ -74,7 +74,7 @@ function MermaidChat ({ node }: {
     const theme = isDark ? darkTheme : lightTheme;
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     mermaid.initialize({
       startOnLoad: true,
       securityLevel: 'loose',
@@ -88,7 +88,7 @@ function MermaidChat ({ node }: {
       setInnerHtml(svg);
     } catch (e) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error
       setError(e.message);
     }
   }, [id, isDark]);

@@ -11,13 +11,13 @@ export enum GridColumnType {
   NewProperty,
 }
 
-export type RenderColumn = {
+export interface RenderColumn {
   type: GridColumnType;
   visibility?: FieldVisibility;
   fieldId?: FieldId;
   width: number;
   wrap?: boolean;
-};
+}
 
 export function useRenderFields() {
   const fields = useFieldsSelector();

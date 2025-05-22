@@ -48,7 +48,7 @@ const defaultTriggerChar: TriggerHotKey = {
 export const allTriggerChars = new Set(Object.values(defaultTriggerChar).flat());
 
 // Define the rules for markdown shortcuts
-type Rule = {
+interface Rule {
   type: 'block' | 'mark' | 'symbol';
   match: RegExp
   format: string
@@ -405,7 +405,7 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
 
       if (matches.length > 0 && matches.every((match) => !rule.filter?.(editor, match))) {
         for (const match of matches.reverse()) {
-          const start = match.index!;
+          const start = match.index;
           const end = start + match[0].length - 1;
           const matchRange = {
             anchor: { path, offset: start },

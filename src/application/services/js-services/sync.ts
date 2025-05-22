@@ -13,7 +13,7 @@ export class SyncManager {
 
   private lastSyncedAt: string;
 
-  private hasUnsyncedChanges: boolean = false;
+  private hasUnsyncedChanges = false;
 
   private isSending = false;
 

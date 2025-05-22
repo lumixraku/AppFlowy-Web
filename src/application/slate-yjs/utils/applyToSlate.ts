@@ -12,7 +12,7 @@ import { findSlateEntryByBlockId } from '@/application/slate-yjs/utils/editor';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type BlockMapEvent = YMapEvent<any>
 
-export function translateYEvents(editor: YjsEditor, events: Array<YEvent<any>>) {
+export function translateYEvents(editor: YjsEditor, events: YEvent<any>[]) {
   console.log('=== Translating Yjs events ===', events);
 
   events.forEach((event) => {
@@ -65,7 +65,7 @@ function applyUpdateBlockYEvent(editor: YjsEditor, blockId: string, event: YMapE
 function applyTextYEvent(editor: YjsEditor, textId: string, event: YTextEvent) {
   const { target } = event;
 
-  const yText = target as Y.Text;
+  const yText = target;
   const delta = yText.toDelta();
   const slateDelta = delta.flatMap(deltaInsertToSlateNode);
   const [entry] = editor.nodes({

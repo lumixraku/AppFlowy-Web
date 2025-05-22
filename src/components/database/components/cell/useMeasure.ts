@@ -11,7 +11,7 @@ export function useMeasureHeight ({
   }[];
 }) {
   const isDocumentBlock = useDatabaseContext().isDocumentBlock;
-  const heightRef = useRef<{ [rowId: string]: number }>({});
+  const heightRef = useRef<Record<string, number>>({});
   const rowHeight = useCallback(
     (index: number) => {
       const row = rows[index];

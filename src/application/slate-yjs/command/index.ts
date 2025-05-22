@@ -61,7 +61,7 @@ export const CustomEditor = {
     return editor.string(at);
   },
   // Get the text content of a block node, including the text content of its children and formula nodes
-  getBlockTextContent(node: Node, depth: number = Infinity): string {
+  getBlockTextContent(node: Node, depth = Infinity): string {
     if(Text.isText(node)) {
       if(node.formula) {
         return node.formula;

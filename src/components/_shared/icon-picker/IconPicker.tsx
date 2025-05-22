@@ -60,17 +60,17 @@ function IconPicker({
   const rowData = React.useMemo(() => {
     if (!filteredIcons) return [];
 
-    const rows: Array<{
+    const rows: {
       type: 'category' | 'icons';
       category?: string;
-      icons?: Array<{
+      icons?: {
         id: string;
         name: string;
         content: string;
         keywords: string[];
         cleanSvg: string;
-      }>;
-    }> = [];
+      }[];
+    }[] = [];
 
     Object.entries(filteredIcons).forEach(([category, icons]) => {
       if (icons.length === 0) return;

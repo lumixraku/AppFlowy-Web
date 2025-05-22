@@ -11,7 +11,7 @@ export enum TAB_KEY {
   UNSPLASH = 'unsplash',
 }
 
-export type TabOption = {
+export interface TabOption {
   key: TAB_KEY;
   label: string;
   Component: React.ComponentType<{
@@ -21,7 +21,7 @@ export type TabOption = {
   }>;
   onDone?: (value: string) => void;
   uploadAction?: (file: File) => Promise<string>;
-};
+}
 
 export function UploadTabs ({
   tabOptions,

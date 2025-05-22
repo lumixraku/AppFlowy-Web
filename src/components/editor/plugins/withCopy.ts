@@ -31,7 +31,7 @@ export const withCopy = (editor: ReactEditor) => {
       return;
     }
 
-    setFragmentData(<DataTransfer>data);
+    setFragmentData((data as DataTransfer));
   };
 
   return editor;

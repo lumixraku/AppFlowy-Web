@@ -5,7 +5,7 @@ import axios from 'axios';
 const http = axios.create();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const pendingRequests: Map<string, Promise<any>> = new Map();
+const pendingRequests = new Map<string, Promise<any>>();
 
 async function httpGet(url: string) {
   if(pendingRequests.has(url)) {

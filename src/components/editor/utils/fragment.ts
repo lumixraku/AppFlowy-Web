@@ -183,7 +183,7 @@ function textContentToDelta(text: string) {
     { regex: /~~(.*?)~~/g, format: 'strike' },        // ~~strike~~
   ];
 
-  type Mark = {
+  interface Mark {
     start: number;
     end: number;
     text: string;

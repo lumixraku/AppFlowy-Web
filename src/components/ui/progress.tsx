@@ -66,7 +66,7 @@ export function Progress ({
   ...props
 }: ProgressProps) {
   // Calculate dimensions based on size variant
-  const dimensions: number = 20;
+  const dimensions = 20;
 
   const strokeWidth = 2.5;
 

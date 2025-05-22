@@ -1,16 +1,16 @@
 import { Element, NodeEntry } from 'slate';
 import type { RelativePosition } from 'yjs';
 
-export type HistoryStackItem = {
+export interface HistoryStackItem {
   meta: Map<string, unknown>;
-};
+}
 
-export type RelativeRange = {
+export interface RelativeRange {
   anchor: RelativePosition;
   focus: RelativePosition;
   anchorEntry: NodeEntry<Element>;
   focusEntry: NodeEntry<Element>;
-};
+}
 
 export interface BlockJson {
   id: string;

@@ -25,14 +25,14 @@ interface EditorInlineAttributes {
   };
 }
 
-type CustomElement = {
+interface CustomElement {
   children: (CustomText | CustomElement)[];
   type?: string;
   data?: unknown;
   blockId?: string;
   textId?: string;
   relationId?: string;
-};
+}
 
 type CustomText = { text: string } & EditorInlineAttributes;
 

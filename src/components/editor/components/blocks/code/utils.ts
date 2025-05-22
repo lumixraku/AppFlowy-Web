@@ -12,7 +12,7 @@ const push_string = (
 
   ranges.push({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     prism_token: token_type,
     anchor: { path, offset: newStart },
     focus: { path, offset: newStart + token.length },

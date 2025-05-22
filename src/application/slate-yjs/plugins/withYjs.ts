@@ -6,10 +6,10 @@ import { ReactEditor } from 'slate-react';
 import { Doc, YEvent, Transaction } from 'yjs';
 import { yDocToSlateContent } from '@/application/slate-yjs/utils/convert';
 
-type LocalChange = {
+interface LocalChange {
   op: Operation;
   slateContent: Descendant[];
-};
+}
 
 export interface YjsEditor extends Editor {
   readOnly: boolean;
@@ -17,7 +17,7 @@ export interface YjsEditor extends Editor {
   connect: () => void;
   disconnect: () => void;
   sharedRoot: YSharedRoot;
-  applyRemoteEvents: (events: Array<YEvent<any>>, transaction: Transaction) => void;
+  applyRemoteEvents: (events: YEvent<any>[], transaction: Transaction) => void;
   flushLocalChanges: () => void;
   storeLocalChange: (op: Operation) => void;
   interceptLocalChange: boolean;
@@ -53,7 +53,7 @@ export const YjsEditor = {
     editor.disconnect();
   },
 
-  applyRemoteEvents(editor: YjsEditor, events: Array<YEvent<any>>, transaction: Transaction): void {
+  applyRemoteEvents(editor: YjsEditor, events: YEvent<any>[], transaction: Transaction): void {
     editor.applyRemoteEvents(events, transaction);
   },
 
@@ -137,7 +137,7 @@ export function withYjs<T extends Editor>(
     apply(op);
   };
 
-  e.applyRemoteEvents = (events: Array<YEvent<any>>, transaction: Transaction) => {
+  e.applyRemoteEvents = (events: YEvent<any>[], transaction: Transaction) => {
     console.time('applyRemoteEvents');
     // Flush local changes to ensure all local changes are applied before processing remote events
     YjsEditor.flushLocalChanges(e);
@@ -168,7 +168,7 @@ export function withYjs<T extends Editor>(
     console.timeEnd('applyRemoteEvents');
   };
 
-  const handleYEvents = (events: Array<YEvent<any>>, transaction: Transaction) => {
+  const handleYEvents = (events: YEvent<any>[], transaction: Transaction) => {
     if (transaction.origin === CollabOrigin.Local) return;
     YjsEditor.applyRemoteEvents(e, events, transaction);
 

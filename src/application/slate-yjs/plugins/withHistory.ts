@@ -8,7 +8,7 @@ import { HistoryStackItem, RelativeRange } from '../types';
 
 import { getDocument } from '@/application/slate-yjs/utils/yjs';
 
-const LAST_SELECTION: WeakMap<Editor, RelativeRange | null> = new WeakMap();
+const LAST_SELECTION = new WeakMap<Editor, RelativeRange | null>();
 
 export type YHistoryEditor = YjsEditor & {
   undoManager: Y.UndoManager;

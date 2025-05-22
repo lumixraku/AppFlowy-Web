@@ -44,7 +44,7 @@ export function processUrl(input: string) {
   return;
 }
 
-export async function openUrl(url: string, target: string = '_current') {
+export async function openUrl(url: string, target = '_current') {
 
   const newUrl = processUrl(url);
 

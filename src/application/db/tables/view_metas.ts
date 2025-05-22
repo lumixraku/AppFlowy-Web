@@ -11,9 +11,9 @@ export type ViewMeta = {
   database_relations: Record<string, string>;
 } & ViewInfo;
 
-export type ViewMetasTable = {
+export interface ViewMetasTable {
   view_metas: Table<ViewMeta>;
-};
+}
 
 export const viewMetasSchema = {
   view_metas: 'publish_name',

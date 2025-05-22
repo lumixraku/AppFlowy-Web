@@ -4,7 +4,7 @@ import { Button, ButtonProps, CircularProgress, Dialog, DialogProps, IconButton 
 import { ReactComponent as CloseIcon } from '@/assets/icons/close.svg';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-expect-error
 export interface NormalModalProps extends DialogProps {
   okText?: string;
   cancelText?: string | React.ReactNode;

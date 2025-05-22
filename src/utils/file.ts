@@ -15,7 +15,7 @@ class FileStorage {
   private storeName: string;
   private db: IDBDatabase | null;
 
-  constructor(dbName: string = 'FileStorage', storeName: string = 'files') {
+  constructor(dbName = 'FileStorage', storeName = 'files') {
     this.dbName = dbName;
     this.storeName = storeName;
     this.db = null;

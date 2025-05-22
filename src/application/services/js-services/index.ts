@@ -55,19 +55,19 @@ import * as Y from 'yjs';
 export class AFClientService implements AFService {
   private deviceId: string = nanoid(8);
 
-  private clientId: string = 'web';
+  private clientId = 'web';
 
-  private viewLoaded: Set<string> = new Set();
+  private viewLoaded = new Set<string>();
 
-  private publishViewLoaded: Set<string> = new Set();
+  private publishViewLoaded = new Set<string>();
 
-  private publishViewInfo: Map<
+  private publishViewInfo = new Map<
     string,
     {
       namespace: string;
       publishName: string;
     }
-  > = new Map();
+  >();
 
   constructor(config: AFServiceConfig) {
     APIService.initAPIService(config.cloudConfig);

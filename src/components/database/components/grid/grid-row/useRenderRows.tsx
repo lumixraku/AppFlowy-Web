@@ -8,11 +8,11 @@ export enum RenderRowType {
   CalculateRow = 'calculate-row',
 }
 
-export type RenderRow = {
+export interface RenderRow {
   type: RenderRowType;
   rowId?: string;
   height?: number;
-};
+}
 
 export function useRenderRows() {
   const rows = useRowOrdersSelector();

@@ -1,4 +1,4 @@
-const hasLoadedFonts: Set<string> = new Set();
+const hasLoadedFonts = new Set<string>();
 
 export function getFontFamily(attribute: string) {
   const fontFamily = attribute.split('_')[0];
