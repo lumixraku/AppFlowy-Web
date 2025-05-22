@@ -1,6 +1,6 @@
 import { IconButton } from '@mui/material';
 import Button from '@mui/material/Button';
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { ToolbarProps } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
