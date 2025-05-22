@@ -1,13 +1,18 @@
-import { useDatabaseContext } from '@/application/database-yjs';
+import { debounce } from 'lodash-es';
+import { useEffect, useRef } from 'react';
+import { Calendar as BigCalendar } from 'react-big-calendar';
+
+import { CalendarEvent, useDatabaseContext } from '@/application/database-yjs';
 import { useCalendarSetup } from '@/components/database/calendar/Calendar.hooks';
 import { Toolbar, Event } from '@/components/database/components/calendar';
 import { useConditionsContext } from '@/components/database/components/conditions/context';
-import { debounce } from 'lodash-es';
-import React, { useEffect, useRef } from 'react';
-import { Calendar as BigCalendar } from 'react-big-calendar';
 import './calendar.scss';
 
-export function Calendar () {
+type ToolbarPropsAdapter = Omit<React.ComponentProps<typeof Toolbar>, 'emptyEvents'> & {
+  emptyEvents: CalendarEvent[];
+};
+
+export function Calendar() {
   const { dayPropGetter, localizer, formats, events, emptyEvents } = useCalendarSetup();
   const scrollLeft = useDatabaseContext().scrollLeft;
   const isDocumentBlock = useDatabaseContext().isDocumentBlock;
@@ -49,7 +54,11 @@ export function Calendar () {
     >
       <BigCalendar
         components={{
-          toolbar: (props) => <Toolbar {...props} emptyEvents={emptyEvents} />,
+          toolbar: (props) => {
+            const adaptedProps = props as unknown as ToolbarPropsAdapter;
+
+            return <Toolbar {...adaptedProps} emptyEvents={emptyEvents} />;
+          },
           eventWrapper: Event,
         }}
         events={events}

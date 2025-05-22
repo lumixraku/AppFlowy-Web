@@ -1,9 +1,10 @@
-import { BaseRange, NodeEntry, Element, Point, Range, Text, Transforms } from 'slate';
-import { ReactEditor } from 'slate-react';
+import { BaseRange, Point, Range, Text, Transforms } from 'slate';
 import { TextInsertTextOptions } from 'slate/dist/interfaces/transforms/text';
-import { getBlockEntry } from '@/application/slate-yjs/utils/editor';
+import { ReactEditor } from 'slate-react';
+
 import { YjsEditor } from '@/application/slate-yjs';
 import { isEmbedBlockTypes } from '@/application/slate-yjs/command/const';
+import { getBlockEntry } from '@/application/slate-yjs/utils/editor';
 import { BlockType } from '@/application/types';
 
 export const withInsertText = (editor: ReactEditor) => {
@@ -47,7 +48,7 @@ export const withInsertText = (editor: ReactEditor) => {
     const [start, end] = editor.edges(textPath);
 
     const inMiddle = Point.isAfter(point, start) && Point.isBefore(point, end);
-    
+
     if (!inMiddle && (textNode.code || textNode.href)) {
       Transforms.insertNodes(editor, { text }, { at: point, select: true, voids: false });
       return;

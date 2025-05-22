@@ -1,13 +1,14 @@
-import { notify } from '@/components/_shared/notify';
-import { copyTextToClipboard } from '@/utils/copy';
 import { Button, OutlinedInput, Tooltip } from '@mui/material';
-import React from 'react';
-import { ReactComponent as CopyIcon } from '@/assets/icons/link.svg';
-import { ReactComponent as CheckIcon } from '@/assets/icons/check_circle.svg';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { ReactComponent as CheckIcon } from '@/assets/icons/check_circle.svg';
+import { ReactComponent as CopyIcon } from '@/assets/icons/link.svg';
+import { notify } from '@/components/_shared/notify';
+import { copyTextToClipboard } from '@/utils/copy';
+
 function LinkPreview({ url }: { url: string }) {
-  const [clickCopy, setClickCopy] = React.useState(false);
+  const [clickCopy, setClickCopy] = useState(false);
 
   const { t } = useTranslation();
 
@@ -43,7 +44,7 @@ function LinkPreview({ url }: { url: string }) {
             try {
               await copyTextToClipboard(url);
               notify.success(t('grid.url.copy'));
-            } catch (_) {
+            } catch {
               //do nothing
             }
           }}

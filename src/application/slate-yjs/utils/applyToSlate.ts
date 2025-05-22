@@ -1,12 +1,14 @@
+import isEqual from 'lodash-es/isEqual';
+import { Editor, Element } from 'slate';
+import { YEvent, YMapEvent, YTextEvent } from 'yjs';
+
 import { YjsEditor } from '@/application/slate-yjs';
 import { BlockJson } from '@/application/slate-yjs/types';
 import { blockToSlateNode, deltaInsertToSlateNode } from '@/application/slate-yjs/utils/convert';
-import { YBlock, YjsEditorKey } from '@/application/types';
-import isEqual from 'lodash-es/isEqual';
-import { Editor, Element, NodeEntry } from 'slate';
-import { YEvent, YMapEvent, YTextEvent } from 'yjs';
-import { dataStringTOJson, getBlock, getChildrenArray, getPageId, getText } from '@/application/slate-yjs/utils/yjs';
 import { findSlateEntryByBlockId } from '@/application/slate-yjs/utils/editor';
+import { dataStringTOJson, getBlock, getChildrenArray, getPageId, getText } from '@/application/slate-yjs/utils/yjs';
+import { YBlock, YjsEditorKey } from '@/application/types';
+
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type BlockMapEvent = YMapEvent<any>

@@ -49,7 +49,7 @@ export function useLeafSelected(text: Text) {
       }));
 
       return selected;
-    } catch (e) {
+    } catch {
       return false;
     }
 

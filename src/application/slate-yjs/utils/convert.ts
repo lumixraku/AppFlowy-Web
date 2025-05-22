@@ -1,14 +1,7 @@
+import { Element, Text, Node } from 'slate';
+
 import { BlockJson } from '@/application/slate-yjs/types';
 import { sortTableCells } from '@/application/slate-yjs/utils/table';
-import {
-  BlockData,
-  BlockType,
-  YDoc,
-  YjsEditorKey,
-  YSharedRoot,
-} from '@/application/types';
-import { TableCellNode } from '@/components/editor/editor.type';
-import { Element, Text, Node } from 'slate';
 import {
   createBlock,
   getBlock, getBlocks,
@@ -17,6 +10,14 @@ import {
   getTextMap,
   updateBlockParent,
 } from '@/application/slate-yjs/utils/yjs';
+import {
+  BlockData,
+  BlockType,
+  YDoc,
+  YjsEditorKey,
+  YSharedRoot,
+} from '@/application/types';
+import { TableCellNode } from '@/components/editor/editor.type';
 
 export function traverseBlock(id: string, sharedRoot: YSharedRoot): Element | undefined {
   const textMap = getTextMap(sharedRoot);
@@ -138,7 +139,7 @@ export function blockToSlateNode(block: BlockJson): Element {
 
   try {
     blockData = data ? JSON.parse(data) : {};
-  } catch (e) {
+  } catch {
     // do nothing
   }
 
