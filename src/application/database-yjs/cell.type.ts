@@ -97,7 +97,7 @@ export interface ChecklistCell extends Cell {
 
 export interface RelationCell extends Cell {
   fieldType: FieldType.Relation;
-  data: Y.Array<unknown>;
+  data: YArray<unknown>;
 }
 
 export type RelationCellData = RowId[];

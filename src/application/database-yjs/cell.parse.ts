@@ -43,7 +43,7 @@ export function parseYDatabaseDateTimeCellToCell(cell: YDatabaseCell): DateTimeC
 }
 
 export function parseYDatabaseFileMediaCellToCell(cell: YDatabaseCell): FileMediaCell {
-  const data = cell.get(YjsDatabaseKey.data) as Y.Array<string>;
+  const data = cell.get(YjsDatabaseKey.data) as YArray<string>;
   const dataJson = data.toJSON().map((item: string) => JSON.parse(item)) as FileMediaCellData;
 
   return {
