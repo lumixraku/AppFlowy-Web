@@ -188,7 +188,7 @@ const createServer = async (req: Request) => {
 
             favicon = getIconBase64(iconContent, color);
             $('link[rel="icon"]').attr('type', 'image/svg+xml');
-          } catch (_) {
+          } catch {
             // Do nothing
           }
         }
@@ -211,7 +211,7 @@ const createServer = async (req: Request) => {
               image = `/covers/m_cover_image_${cover.value}.png`;
             }
           }
-        } catch (_) {
+        } catch {
           // Do nothing
         }
       }

@@ -21,7 +21,7 @@ enum SpecialSymbol {
 }
 
 type TriggerHotKey = {
-  [key in BlockType | EditorMarkFormat | SpecialSymbol]?: string[];
+  [K in BlockType | EditorMarkFormat | SpecialSymbol]?: string[];
 };
 
 const defaultTriggerChar: TriggerHotKey = {

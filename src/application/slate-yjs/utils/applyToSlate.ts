@@ -47,7 +47,7 @@ function applyUpdateBlockYEvent(editor: YjsEditor, blockId: string, event: YMapE
     return [];
   }
 
-  const [node, path] = entry as NodeEntry<Element>;
+  const [node, path] = entry;
   const oldData = node.data as Record<string, unknown>;
 
   editor.apply({

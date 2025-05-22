@@ -61,7 +61,7 @@ function EditorOverlay({
   const handleInsertBelow = useCallback((data: EditorData) => {
     if (!endBlock) return;
     try {
-      const [node] = endBlock as NodeEntry<Element>;
+      const [node] = endBlock;
 
       if (!node) return;
 
@@ -110,7 +110,7 @@ function EditorOverlay({
 
         if (!startBlock) return;
 
-        const [node] = startBlock as NodeEntry<Element>;
+        const [node] = startBlock;
 
         if (!node) return;
 

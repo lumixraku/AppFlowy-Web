@@ -70,7 +70,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        argsIgnorePattern: '^_',
+        argsIgnorePattern: '_|e',
+        varsIgnorePattern: '_|e',
       },
     ],
     'padding-line-between-statements': [

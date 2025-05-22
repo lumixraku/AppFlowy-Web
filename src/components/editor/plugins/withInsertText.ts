@@ -18,7 +18,7 @@ export const withInsertText = (editor: ReactEditor) => {
     }
 
     const point = newAt.anchor;
-    const [blockNode] = getBlockEntry(editor as YjsEditor, point) as NodeEntry<Element>;
+    const [blockNode] = getBlockEntry(editor as YjsEditor, point);
 
     if (blockNode && isEmbedBlockTypes(blockNode.type as BlockType)) {
       return;
@@ -34,7 +34,7 @@ export const withInsertText = (editor: ReactEditor) => {
       return;
     }
 
-    const [textNode, textPath] = textEntry as NodeEntry<Text>;
+    const [textNode, textPath] = textEntry;
 
     // If the text node is a formula or mention, split the node and insert the text
     if (textNode.formula || textNode.mention) {
