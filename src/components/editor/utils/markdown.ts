@@ -36,6 +36,7 @@ const defaultTriggerChar: TriggerHotKey = {
   [EditorMarkFormat.Bold]: ['*', '_'],
   [EditorMarkFormat.Italic]: ['*', '_'],
   [EditorMarkFormat.StrikeThrough]: ['~'],
+  // @ts-expect-error  EditorMarkFormat.Code is same as BlockType.CodeBlock
   [EditorMarkFormat.Code]: ['`'],
   [EditorMarkFormat.Formula]: ['$'],
   [EditorMarkFormat.Href]: [')'],
@@ -60,7 +61,7 @@ function deletePrefix(editor: YjsEditor, offset: number) {
 
   const { selection } = editor;
 
-  if(!selection) return;
+  if (!selection) return;
   editor.select({
     anchor: editor.start(path),
     focus: { path: selection.focus.path, offset: offset },
@@ -108,7 +109,7 @@ const rules: Rule[] = [
       const blockType = getNodeType(editor);
 
       // If the current block is a toggle list block, we don't need to change the block type
-      if(blockType === BlockType.ToggleListBlock) {
+      if (blockType === BlockType.ToggleListBlock) {
         CustomEditor.setBlockData(editor, node.blockId as string, { level });
         deletePrefix(editor, level);
         return;
@@ -130,7 +131,7 @@ const rules: Rule[] = [
       let level: number | undefined;
 
       // If the current block is a heading block, we need to get the level of the heading block
-      if(type === BlockType.HeadingBlock) {
+      if (type === BlockType.HeadingBlock) {
         level = (getBlockData(editor) as HeadingBlockData).level;
       }
 
@@ -232,12 +233,12 @@ const rules: Rule[] = [
     transform: (editor) => {
       const newBlockId = CustomEditor.turnToBlock(editor, getBlockEntry(editor)[0].blockId as string, BlockType.DividerBlock, {});
 
-      if(!newBlockId) {
+      if (!newBlockId) {
         Transforms.move(editor, { distance: 1, reverse: true });
       } else {
         const entry = findSlateEntryByBlockId(editor, newBlockId);
 
-        if(entry) {
+        if (entry) {
           Transforms.select(editor, entry[1]);
         }
       }
@@ -257,7 +258,7 @@ const rules: Rule[] = [
     filter: (_editor, match) => {
       const key = match[0];
 
-      if(key === '**') return true;
+      if (key === '**') return true;
       const text = match[1] || match[2];
 
       return !text || text.length === 0;
@@ -292,7 +293,7 @@ const rules: Rule[] = [
       const text = match[1];
       const { selection } = editor;
 
-      if(!selection) return;
+      if (!selection) return;
       const path = selection.anchor.path;
       const start = match.index!;
 
@@ -314,7 +315,7 @@ const rules: Rule[] = [
       const formula = match[1];
       const { selection } = editor;
 
-      if(!selection) return;
+      if (!selection) return;
       const path = selection.anchor.path;
       const start = match.index!;
 
@@ -369,7 +370,7 @@ const rules: Rule[] = [
 export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean => {
   const { selection } = editor;
 
-  if(!selection || !Range.isCollapsed(selection)) return false;
+  if (!selection || !Range.isCollapsed(selection)) return false;
 
   const [, path] = getBlockEntry(editor);
   const start = Editor.start(editor, path);
@@ -378,19 +379,19 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
     focus: selection.focus,
   }) + insertText;
 
-  for(const rule of rules) {
-    if(rule.type === 'block') {
+  for (const rule of rules) {
+    if (rule.type === 'block') {
       const match = text.match(rule.match);
 
-      if(match && !rule.filter?.(editor, match)) {
+      if (match && !rule.filter?.(editor, match)) {
 
-        if(rule.transform) {
+        if (rule.transform) {
           rule.transform(editor, match);
         }
 
         return true;
       }
-    } else if(rule.type === 'mark') {
+    } else if (rule.type === 'mark') {
       const path = selection.anchor.path;
       const text = editor.string({
         anchor: {
@@ -402,8 +403,8 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
 
       const matches = [...text.matchAll(new RegExp(rule.match, 'g'))];
 
-      if(matches.length > 0 && matches.every((match) => !rule.filter?.(editor, match))) {
-        for(const match of matches.reverse()) {
+      if (matches.length > 0 && matches.every((match) => !rule.filter?.(editor, match))) {
+        for (const match of matches.reverse()) {
           const start = match.index!;
           const end = start + match[0].length - 1;
           const matchRange = {
@@ -414,7 +415,7 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
           Transforms.select(editor, matchRange);
           editor.delete();
 
-          if(rule.transform) {
+          if (rule.transform) {
             rule.transform(editor, match);
           } else {
             const formatText = match[1] || match[2];
@@ -433,10 +434,10 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
         return true;
       }
 
-    } else if(rule.type === 'symbol') {
+    } else if (rule.type === 'symbol') {
       const block = getBlockEntry(editor)[0];
 
-      if(block.type === BlockType.CodeBlock) return false;
+      if (block.type === BlockType.CodeBlock) return false;
       const path = selection.anchor.path;
       const text = editor.string({
         anchor: {
@@ -447,8 +448,8 @@ export const applyMarkdown = (editor: YjsEditor, insertText: string): boolean =>
       }) + insertText;
       const match = text.match(rule.match);
 
-      if(match) {
-        if(rule.transform) {
+      if (match) {
+        if (rule.transform) {
           rule.transform(editor, match);
         }
 

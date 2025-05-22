@@ -126,7 +126,7 @@ function deserializeNode(node: Node, parentBlock: YBlock, sharedRoot: YSharedRoo
       const lastChild = getBlock(lastChildId, sharedRoot);
       const attributes = getInlineAttributes(element);
 
-      if (lastChild && (filter(TEXT_BLOCK_TYPES, n => n !== BlockType.CodeBlock).includes(lastChild.get(YjsEditorKey.block_type)))) {
+      if (lastChild && (filter(TEXT_BLOCK_TYPES, n => n !== BlockType.CodeBlock) as BlockType[]).includes(lastChild.get(YjsEditorKey.block_type))) {
         applyTextToDelta(lastChild, sharedRoot, element.textContent || '', attributes);
         return;
       } else {

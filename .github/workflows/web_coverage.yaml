@@ -7,7 +7,7 @@ on:
       - "develop"
       - "release/*"
 env:
-  NODE_VERSION: "18.20.8"
+  NODE_VERSION: "18.16.1"
   PNPM_VERSION: "10.9.0"
   COVERAGE: "true"
   

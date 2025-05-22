@@ -1,9 +1,10 @@
 node_modules/
 dist/
-.eslintrc.cjs
+coverage/
 tsconfig.json
-**/backend/**
-vite.config.ts
 **/*.cy.tsx
 *.config.ts
-coverage/
+.eslintrc.cjs
+**/backend/**
+vite.config.ts
+
